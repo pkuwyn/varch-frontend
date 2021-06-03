@@ -66,7 +66,7 @@ export default function Header(props) {
             </Button>
           )}
 
-          <Box flexGrow={matchSmDown ? 1 : 0}>
+          <Box mr="auto">
             <RouterLink to="/">
               <Typography variant="h6" color="initial">
                 虚拟仿真田野考古
@@ -79,7 +79,7 @@ export default function Header(props) {
               <MobileMenu></MobileMenu>
             </Box>
           ) : (
-            <Box flexGrow={1} ml={4}>
+            <Box ml={4} mr={4}>
               <DesktopTab></DesktopTab>
             </Box>
           )}
