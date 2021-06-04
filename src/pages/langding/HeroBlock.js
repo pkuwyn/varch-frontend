@@ -12,11 +12,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    "& > *": {
-      marginBottom: "2rem",
-    },
-  },
+  container: {},
   mainActionButton: {
     fontWeight: 700,
     letterSpacing: "4px",
@@ -42,18 +38,37 @@ export default function HeroBlock(props) {
           xs: "100px",
           md: "200px",
         }}
-        px={{
-          xs: 5,
-          md: 15,
+        mx={{
+          xs: 2,
+          sm: 4,
+          md: 6,
+          lg: 10,
         }}
         height={1000}
         display="flex"
         flexDirection="column"
         alignItems={matchXsDown ? "center" : "flex-start"}
-        className={classes.container}
       >
-        <Typography variant="h3" color="initial">
-          虚拟仿真田野考古
+        <Typography
+          variant="h6"
+          color="initial"
+          style={{
+            fontWeight: 900,
+            position: "relative",
+            left: 5,
+          }}
+        >
+          虚拟仿真
+        </Typography>
+        <Typography
+          variant="h3"
+          color="initial"
+          style={{
+            fontWeight: "bold",
+            fontFamily: "SimSun",
+          }}
+        >
+          田野考古教学
         </Typography>
         <Typography
           variant="subtitle"
@@ -61,11 +76,9 @@ export default function HeroBlock(props) {
           style={{
             maxWidth: 500,
           }}
+          paragraph
         >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, vitae.
-          Excepturi impedit at quis numquam deserunt ratione vero consectetur
-          rerum sit vel, libero, error ipsam. Saepe blanditiis minima temporibus
-          porro.
+          学习田野考古理论知识，虚拟参观田野考古遗址，完成一次虚拟的建筑考古发掘
         </Typography>
         <Button
           variant="contained"

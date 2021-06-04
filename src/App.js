@@ -29,6 +29,9 @@ import { Courses } from "./pages/courses";
 import { Vtours } from "./pages/vtours";
 import { VirtualExcavation } from "./pages/virtual-excavation";
 
+//dev Only
+import DesignSystem from "./DesignSystem";
+
 export default function App(props) {
   //call userInit Hook
   useRemoteUser();
@@ -51,9 +54,16 @@ export default function App(props) {
             <Route path="/virtual-excavation">
               <VirtualExcavation></VirtualExcavation>
             </Route>
+
+            {/* dev Only */}
+            <Route exact path="/d">
+              <DesignSystem></DesignSystem>
+            </Route>
+
             <Route exact path="/">
               <LandingPage></LandingPage>
             </Route>
+
             <Redirect to="/"></Redirect>
           </Switch>
         </div>

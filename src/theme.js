@@ -77,6 +77,9 @@ let theme = createMuiTheme(
       MuiButton: {
         // variant: "outlined",
       },
+      MuiTypography: {
+        gutterBottom: true,
+      },
     },
     overrides: {
       MuiCssBaseline: {
@@ -87,24 +90,9 @@ let theme = createMuiTheme(
           },
         },
       },
-      // MuiToolbar: {
-      //   root: {
-      //     paddingLeft: "0 !important",
-      //   },
-      // },
-      // MuiAppBar: {
-      //   root: {
-      //     border: "5px solid green",
-      //   },
-      // },
 
       MuiButton: {
         root: { borderRadius: "500px" },
-      },
-      MuiOutlinedInput: {
-        root: {
-          borderRadius: "200px",
-        },
       },
     },
     borders: {

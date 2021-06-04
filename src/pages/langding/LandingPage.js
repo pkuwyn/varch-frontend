@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 
 //local
 import HeroBlock from "./HeroBlock";
+import RegisterBlock from "./RegisterBlock";
 
 const useStyles = makeStyles((theme) => ({
   pig: {
@@ -28,6 +29,17 @@ export default function LandingPage(props) {
   return (
     <>
       <HeroBlock></HeroBlock>
+      <Box
+        mx={{
+          xs: 2,
+          sm: 4,
+          md: 6,
+          lg: 10,
+        }}
+        pb={4}
+      >
+        <RegisterBlock></RegisterBlock>
+      </Box>
     </>
   );
 }

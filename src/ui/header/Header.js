@@ -2,12 +2,11 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
 
 import { Link as RouterLink, useRouteMatch } from "react-router-dom";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { useTheme } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import logo from "../../assets/logos/logo1.jpg";
 
