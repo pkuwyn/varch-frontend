@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   active: {
-    color: theme.palette.primary.dark,
+    color: theme.palette.secondary.dark,
     opacity: 1,
     fontWeight: 700,
   },

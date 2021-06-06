@@ -8,7 +8,7 @@ import { Link as RouterLink, useRouteMatch } from "react-router-dom";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
-import logo from "../../assets/logos/logo1.jpg";
+import logo from "../../assets/logos/logo.png";
 
 //local
 import ElevationScroll from "../../utils/ElevationScroll";
@@ -30,7 +30,13 @@ const useStyle = makeStyles((theme) => ({
     },
   },
   logo: {
-    width: 64,
+    width: 48,
+    [theme.breakpoints.up("lg")]: {
+      width: 64,
+    },
+    [theme.breakpoints.up("xl")]: {
+      width: 72,
+    },
   },
 }));
 

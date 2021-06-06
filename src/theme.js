@@ -1,4 +1,4 @@
-import { amber, indigo, red } from "@material-ui/core/colors";
+import { amber, indigo, red, brown } from "@material-ui/core/colors";
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { unstable_createMuiStrictModeTheme } from "@material-ui/core";
 import { zhCN } from "@material-ui/core/locale";
@@ -9,10 +9,11 @@ let theme = createMuiTheme(
   {
     palette: {
       // type: "dark",
-      primary: amber,
+      primary: brown,
       // primary: {
-      //   main: "#584C33",
+      //   main: "#BB9D81",
       // },
+
       secondary: indigo,
       tertiary: {
         main: red[500],

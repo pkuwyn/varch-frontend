@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   mainActionButton: {
     fontWeight: 700,
     letterSpacing: "4px",
+    fontSize: theme.typography.h4.fontSize,
   },
 }));
 
@@ -50,35 +51,34 @@ export default function HeroBlock(props) {
         alignItems={matchXsDown ? "center" : "flex-start"}
       >
         <Typography
-          variant="h6"
+          variant="h4"
           color="initial"
           style={{
             fontWeight: 900,
-            position: "relative",
+            // position: "relative",
             left: 5,
           }}
         >
           虚拟仿真
         </Typography>
         <Typography
-          variant="h3"
+          variant="h2"
           color="initial"
           style={{
-            fontWeight: "bold",
             fontFamily: "SimSun",
           }}
         >
-          田野考古教学
+          田野考古
         </Typography>
         <Typography
-          variant="subtitle"
+          variant="h6"
           color="initial"
           style={{
             maxWidth: 500,
           }}
           paragraph
         >
-          学习田野考古理论知识，虚拟参观田野考古遗址，完成一次虚拟的建筑考古发掘
+          本网站通过虚拟仿真的方式提供田野考古教学，学习田野考古理论知识，虚拟参观田野考古遗址，完成一次虚拟的建筑考古发掘
         </Typography>
         <Button
           variant="contained"
