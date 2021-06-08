@@ -37,6 +37,13 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: `0 !important`,
       marginRight: 4,
     },
+    minWidth: 120,
+    [theme.breakpoints.up("lg")]: {
+      minWidth: 160,
+    },
+    [theme.breakpoints.up("xl")]: {
+      minWidth: 200,
+    },
   },
   tabWrapper: {
     flexDirection: "row",
@@ -61,7 +68,7 @@ export default function DesktopTab(props) {
     <Tabs
       value={value}
       onChange={handleChange}
-      centered
+      // centered
       aria-label="website menu"
       // className={classes.tabs}
       TabIndicatorProps={{
@@ -70,11 +77,12 @@ export default function DesktopTab(props) {
         },
       }}
     >
-      {headerTabConfig.map(({ label, path }, index) => (
+      {headerTabConfig.map(({ label, path, exact }, index) => (
         <Tab
           key={path}
           label={label}
           component={NavLink}
+          exact={exact}
           to={path}
           classes={{ root: classes.tabRoot, wrapper: classes.tabWrapper }}
           activeClassName={classes.active}

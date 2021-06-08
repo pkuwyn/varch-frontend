@@ -2,13 +2,13 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-
+import Hidden from "@material-ui/core/Hidden";
 import { Link as RouterLink, useRouteMatch } from "react-router-dom";
 
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
-import logo from "../../assets/logos/logo.png";
+import logo from "../../assets/logos/logo2.png";
 
 //local
 import ElevationScroll from "../../utils/ElevationScroll";
@@ -55,9 +55,10 @@ export default function Header(props) {
       <AppBar
         color="default"
         position={matchAccountRoute ? "static" : "sticky"}
+        component="header"
       >
         <Toolbar disableGutters className={classes.toolbar}>
-          {!matchSmDown && (
+          <Box flexGrow={matchSmDown ? 1 : 0}>
             <Button
               component={RouterLink}
               to="/"
@@ -69,22 +70,23 @@ export default function Header(props) {
             >
               <img src={logo} alt="logo" className={classes.logo} />
             </Button>
-          )}
-
-          <Box mr="auto">
-            <RouterLink to="/">
-              <Typography variant="h6" color="initial">
-                虚拟仿真田野考古
-              </Typography>
-            </RouterLink>
           </Box>
+          <Hidden smDown>
+            <Box mr="auto">
+              <RouterLink to="/">
+                <Typography variant="h6" color="initial">
+                  虚拟仿真田野考古
+                </Typography>
+              </RouterLink>
+            </Box>
+          </Hidden>
 
           {matchSmDown ? (
             <Box order={-1}>
               <MobileMenu></MobileMenu>
             </Box>
           ) : (
-            <Box ml={4} mr={4}>
+            <Box ml={4} mr={2}>
               <DesktopTab></DesktopTab>
             </Box>
           )}

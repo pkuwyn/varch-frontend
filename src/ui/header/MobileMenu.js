@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1,
     fontWeight: 700,
     "& svg": {
-      color: theme.palette.primary.dark,
+      color: theme.palette.secondary.dark,
     },
   },
 }));
@@ -50,12 +50,13 @@ export default function MobileMenu(props) {
         onOpen={toggleDrawer}
         variant="temporary"
       >
-        {headerTabConfig.map(({ label, path }, index) => (
+        {headerTabConfig.map(({ label, path, exact }, index) => (
           <ListItem
             key={path}
             button
             divider
             component={NavLink}
+            exact={exact}
             to={path}
             onClick={toggleDrawer}
             activeClassName={classes.active}

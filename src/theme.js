@@ -1,4 +1,4 @@
-import { amber, indigo, red, brown } from "@material-ui/core/colors";
+import { amber, indigo, brown, lightGreen } from "@material-ui/core/colors";
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { unstable_createMuiStrictModeTheme } from "@material-ui/core";
 import { zhCN } from "@material-ui/core/locale";
@@ -16,9 +16,9 @@ let theme = createMuiTheme(
 
       secondary: indigo,
       tertiary: {
-        main: red[500],
-        light: red[200],
-        dark: red[800],
+        main: lightGreen[500],
+        light: lightGreen[200],
+        dark: lightGreen[800],
       },
       footer: {
         bg: "#584C33",
@@ -96,9 +96,8 @@ let theme = createMuiTheme(
         root: { borderRadius: "500px" },
       },
     },
-    borders: {
-      bigBorder: "5px solid red",
-    },
+
+    borders: {},
     shape: {
       round: "50%",
     },
@@ -112,6 +111,22 @@ theme.mixins.accountManageButton = {
   letterSpacing: "4px",
   background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.light});`,
   borderRadius: "100px",
+};
+theme.borders.smBorder = `1px solid ${theme.palette.grey[300]}`;
+theme.borders.bigDownBorder = `4px solid ${theme.palette.primary.main}`;
+
+theme.mixins.buttonLabelWithArrow = {
+  position: "relative",
+  "&:after": {
+    transition: "opacity 0.5s",
+    position: "absolute",
+    right: -20,
+    content: `">"`,
+    opacity: 0,
+  },
+  "&:hover:after": {
+    opacity: 1,
+  },
 };
 // console.log(theme.breakpoints);
 // console.log(theme.props.MuiToolbar.root);

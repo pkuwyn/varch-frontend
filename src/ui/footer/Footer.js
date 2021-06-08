@@ -10,7 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Box from "@material-ui/core/Box";
 
 //local import
-import logo from "../../assets/logos/logo.jpg";
+import logo from "../../assets/logos/logo.png";
 import { footLinkConfig } from "./footLinkConfig";
 import SiteMap from "./SiteMap";
 import QRCodeForCurrenttPage from "./QRCodeForCurrenttPage";
