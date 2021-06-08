@@ -1,1 +1,1 @@
-export { default as VirtualExcavation } from "./VirtualExcavation";
+export { default as VirtualExcavationPage } from "./VirtualExcavationPage";

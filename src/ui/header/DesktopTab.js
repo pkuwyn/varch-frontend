@@ -48,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
   tabWrapper: {
     flexDirection: "row",
     alignItems: "center",
+    transition: "all 0.3s",
+    "&:hover": {
+      transform: "translateY(-2px)",
+    },
   },
   active: {
     color: theme.palette.secondary.dark,

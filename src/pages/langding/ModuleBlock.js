@@ -85,7 +85,7 @@ export default function ModuleBlock(props) {
             title="虚拟实习"
             subtitle="在线考古遗址踏查实习"
             iconComponent={<FlightTakeoffIcon color="inherit" />}
-            features={["考古遗址3D漫游", "遗址全景漫游", "遗址重要知识点讲解"]}
+            features={["考古遗址3D漫游", "考古遗址全景漫游", "遗址知识点讲解"]}
             link="/vtours"
             headerImage="/assets/img/landing/module2.jpg"
             color={theme.palette.tertiary.dark}

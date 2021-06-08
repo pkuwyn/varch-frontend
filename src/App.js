@@ -27,7 +27,7 @@ import { LandingPage } from "./pages/langding";
 import { Account } from "./pages/account";
 import { Courses } from "./pages/courses";
 import { Vtours } from "./pages/vtours";
-import { VirtualExcavation } from "./pages/virtual-excavation";
+import { VirtualExcavationPage } from "./pages/virtual-excavation";
 
 //dev Only
 import DesignSystem from "./DesignSystem";
@@ -52,7 +52,7 @@ export default function App(props) {
               <Vtours></Vtours>
             </Route>
             <Route path="/virtual-excavation">
-              <VirtualExcavation></VirtualExcavation>
+              <VirtualExcavationPage></VirtualExcavationPage>
             </Route>
 
             {/* dev Only */}

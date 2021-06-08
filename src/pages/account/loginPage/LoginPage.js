@@ -28,7 +28,7 @@ export default function LoginPage(props) {
       </Fade>
 
       {/* dev only */}
-      <AccountStatus></AccountStatus>
+      {/* <AccountStatus></AccountStatus> */}
     </FullPageLayoutBox>
   );
 }

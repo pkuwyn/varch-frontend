@@ -20,8 +20,11 @@ export default function LandingPage(props) {
       <ModuleBlock></ModuleBlock>
       <FeatureBlock></FeatureBlock>
 
-      {user ? null : <RegisterBlock></RegisterBlock>}
-      {user ? <StartLearningBlock></StartLearningBlock> : null}
+      {user ? (
+        <StartLearningBlock></StartLearningBlock>
+      ) : (
+        <RegisterBlock></RegisterBlock>
+      )}
     </Box>
   );
 }
