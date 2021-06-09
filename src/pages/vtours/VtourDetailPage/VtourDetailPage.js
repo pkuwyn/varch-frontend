@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink, Redirect } from "react-router-dom";
+import { Link as RouterLink, useParams, Redirect } from "react-router-dom";
 
 //mui
 import Button from "@material-ui/core/Button";
@@ -18,8 +18,8 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import clsx from "clsx";
 
 // local
-import { useAllVtours } from "../../../utils/hooks";
-import VtourCard from "./VtourCard";
+import { useVtourById } from "../../../utils/hooks";
+
 //box import for high priority
 import Box from "@material-ui/core/Box";
 
@@ -40,13 +40,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VtourIndexPage(props) {
+export default function VtourDetailPage(props) {
   const classes = useStyles();
+  const { vtourId } = useParams();
+  let vtour;
+  const { loading, error, data } = useVtourById(vtourId);
 
-  let vtours;
-  const { data, error } = useAllVtours();
   if (data) {
-    vtours = data.allVtours;
+    vtour = data.Vtour;
+
+    //dev
+    console.log(vtour);
   }
   const theme = useTheme();
   const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
@@ -55,12 +59,10 @@ export default function VtourIndexPage(props) {
     console.log(error);
     return <Redirect to="/vtours"></Redirect>;
   }
-
-  return vtours ? (
+  return vtour ? (
     <Box>
-      {vtours.map((vtour) => (
-        <VtourCard key={vtour.id} vtour={vtour}></VtourCard>
-      ))}
+      VtourId : {vtourId}
+      {JSON.stringify(vtour)}
     </Box>
   ) : null;
 }

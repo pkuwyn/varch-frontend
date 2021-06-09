@@ -1,7 +1,7 @@
 import React from "react";
 
 import client from "./client";
-import { CURRENT_USER } from "./query";
+import { CURRENT_USER } from "./UserQuery";
 
 import { makeVar } from "@apollo/client";
 

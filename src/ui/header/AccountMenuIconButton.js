@@ -13,6 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 //Hooks
 import { useLogout } from "../../utils/hooks";
 
@@ -22,9 +23,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AccountMenuIconButton({ iconProps }) {
+export default function AccountMenuIconButton({ iconProps, user }) {
   const classes = useStyles();
-
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -68,6 +68,20 @@ export default function AccountMenuIconButton({ iconProps }) {
           </ListItemIcon>
           <ListItemText primary="个人资料" />
         </MenuItem>
+
+        {user.isAdmin ? (
+          <MenuItem
+            onClick={() => {
+              handleClose();
+              window.open(`${process.env.REACT_APP_ADMIN_URI}`);
+            }}
+          >
+            <ListItemIcon classes={{ root: classes.iconRoot }}>
+              <SupervisorAccountIcon />
+            </ListItemIcon>
+            <ListItemText primary="管理后台" />
+          </MenuItem>
+        ) : null}
 
         <MenuItem
           onClick={() => {

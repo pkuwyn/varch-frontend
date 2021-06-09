@@ -65,6 +65,7 @@ export default function AccountManageButton(props) {
     <>
       {user ? (
         <AccountMenuIconButton
+          user={user}
           iconProps={{
             fontSize: matchSmDown ? "default" : "large",
           }}

@@ -11,29 +11,22 @@ import {
 
 //import sub pages
 import { VtourIndexPage } from "./vtourIndexPage";
-import { LearnPage } from "./learnPage";
+import { VtourDetailPage } from "./VtourDetailPage";
 
 const links = ["learn?vtourId=xxx&name=ooo"];
 
 export default function Vtours() {
   const { path, url } = useRouteMatch();
-
   return (
     <>
-      <Link to={url}>
-        <h2>Vtours</h2>
-      </Link>
+      {/* dev only */}
       <div
         style={{
           display: "flex",
           justifyContent: "space-around",
         }}
       >
-        {links.map((path) => (
-          <Link to={`${url}/${path}`} key={path}>
-            {path}
-          </Link>
-        ))}
+        <Link to={`${url}/60bf69d5b3ba7720606a5ca1`}>Single Tour</Link>
       </div>
 
       <Switch>
@@ -41,8 +34,8 @@ export default function Vtours() {
           <VtourIndexPage></VtourIndexPage>
         </Route>
 
-        <Route path={`${path}/learn`}>
-          <LearnPage></LearnPage>
+        <Route exact path={`${path}/:vtourId`}>
+          <VtourDetailPage></VtourDetailPage>
         </Route>
 
         <Redirect to={url}></Redirect>

@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 
-import { COURSES_FIELDS, USERS_FIELDS } from "./fragments";
+import { COURSES_FIELDS } from "./fragments";
+
 export const GET_COURSES = gql`
   ${COURSES_FIELDS}
   query getAllCourses {
@@ -28,20 +29,19 @@ export const GET_COURSE = gql`
   }
 `;
 
-export const CURRENT_USER = gql`
-  ${USERS_FIELDS}
-  query getCurrentUser {
-    authenticatedUser {
-      ...UsersFields
-    }
-  }
-`;
-
 export const SEARCH_COURSES = gql`
   ${COURSES_FIELDS}
   query getAllCourses($search: String) {
     allCourses(search: $search) {
       ...CoursesFields
+    }
+  }
+`;
+
+export const GET_LONGEST_COURSE = gql`
+  query getLongestCourse {
+    allCourses(sortBy: learningTime_DESC, first: 1) {
+      learningTime
     }
   }
 `;
