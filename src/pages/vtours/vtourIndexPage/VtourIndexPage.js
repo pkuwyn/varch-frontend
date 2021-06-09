@@ -5,6 +5,7 @@ import { Link as RouterLink, Redirect } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 
 //style
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -58,9 +59,11 @@ export default function VtourIndexPage(props) {
 
   return vtours ? (
     <Box>
-      {vtours.map((vtour) => (
-        <VtourCard key={vtour.id} vtour={vtour}></VtourCard>
-      ))}
+      <Container maxWidth="lg" disableGutters>
+        {vtours.map((vtour) => (
+          <VtourCard key={vtour.id} vtour={vtour}></VtourCard>
+        ))}
+      </Container>
     </Box>
   ) : null;
 }

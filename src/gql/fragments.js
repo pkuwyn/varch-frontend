@@ -67,7 +67,6 @@ export const VTOURS_FIELDS_DETAILED = gql`
     learningTime
     order
     tourImage {
-      path
       publicUrl
     }
     questions {
@@ -87,7 +86,6 @@ export const VTOURS_FIELDS = gql`
     learningTime
     order
     tourImage {
-      path
       publicUrl
     }
   }

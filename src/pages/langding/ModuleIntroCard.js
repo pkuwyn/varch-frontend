@@ -92,7 +92,7 @@ export default function ModuleIntroCard({
     <Card className={classes.root}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label={title} className={classes.avatar}>
             {iconComponent}
           </Avatar>
         }
