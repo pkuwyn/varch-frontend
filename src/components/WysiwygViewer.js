@@ -1,6 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-
+import { Editor } from "@tinymce/tinymce-react";
 //mui
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -23,19 +23,13 @@ import clsx from "clsx";
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    marginTop: "1rem",
-    fontWeight: 700,
-    letterSpacing: "4px",
-    fontSize: theme.typography.h5.fontSize,
-    marginRight: "1rem",
-  },
-  secondActionButton: {
-    borderWidth: 2,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
-    },
+  // "@global": {
+  //   ".tox-editor-header": {
+  //     display: "none",
+  //   },
+  // },
+  editorContainer: {
+    ...theme.tinymce,
   },
 }));
 
@@ -44,5 +38,19 @@ export default function WysiwygViewer({ content }) {
   const theme = useTheme();
   const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
 
-  return <Box>{content}</Box>;
+  return (
+    <Box maxWidth={960} px={4} mx="auto" className={classes.editorContainer}>
+      <Editor
+        inline={true}
+        tagName="article"
+        disabled
+        initialValue={content}
+        init={{
+          content_style: `
+            body { font-family:Helvetica,Arial,sans-serif; font-size:14px };
+            `,
+        }}
+      />
+    </Box>
+  );
 }

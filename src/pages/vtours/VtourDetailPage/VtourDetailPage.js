@@ -20,7 +20,7 @@ import clsx from "clsx";
 // local
 import { useVtourById } from "../../../utils/hooks";
 import { WysiwygViewer } from "../../../components";
-
+import VtourIframe from "./VtourIframe";
 //box import for high priority
 import Box from "@material-ui/core/Box";
 
@@ -63,6 +63,11 @@ export default function VtourDetailPage(props) {
   return (
     vtour && (
       <Box>
+        <VtourIframe
+          tourImage={vtour.tourImage}
+          url={vtour.url}
+          title={vtour.name}
+        ></VtourIframe>
         <WysiwygViewer content={vtour.content}></WysiwygViewer>
       </Box>
     )

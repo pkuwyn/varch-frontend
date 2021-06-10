@@ -109,7 +109,7 @@ theme = responsiveFontSizes(theme);
 theme.mixins.accountManageButton = {
   fontWeight: 700,
   letterSpacing: "4px",
-  background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.light});`,
+  background: `linear-gradient(to right, ${theme.palette.primary.dark}, ${theme.palette.primary.light})`,
   borderRadius: "100px",
 };
 theme.borders.smBorder = `1px solid ${theme.palette.grey[300]}`;
@@ -126,6 +126,26 @@ theme.mixins.buttonLabelWithArrow = {
   },
   "&:hover:after": {
     opacity: 1,
+  },
+};
+
+//全局配置所见即所得文章内容显示方式
+theme.tinymce = {
+  "& img": {
+    maxWidth: "80%",
+    // objectFit: "scale-down",
+    height: "unset",
+  },
+  "& a": {
+    color: "green",
+  },
+  "& p": {
+    fontSize: "1rem",
+    textIndent: "2em",
+  },
+  "& ol li": {
+    fontSize: "2rem",
+    color: "red",
   },
 };
 // console.log(theme.breakpoints);
