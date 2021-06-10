@@ -1,45 +1,34 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 import QRCode from "qrcode.react";
 
 //mui
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+
 import IconButton from "@material-ui/core/IconButton";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 //style
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import ShareIcon from "@material-ui/icons/Share";
+import { makeStyles } from "@material-ui/core/styles";
 
 //icons
-import SchoolIcon from "@material-ui/icons/School";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import ShareIcon from "@material-ui/icons/Share";
 
 // utils
-import clsx from "clsx";
 
 // local
 import logo from "./images/logo.jpg";
 
-//box import for high priority
-import Box from "@material-ui/core/Box";
-
 const useStyles = makeStyles((theme) => ({
   dialog: {
-    width: 200,
+    width: 250,
     margin: "auto",
     userSelect: "none",
   },
   paper: {
     margin: "auto",
-    padding: theme.spacing(2),
     width: "100%",
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   title: {
     textAlign: "center",
@@ -66,7 +55,7 @@ export default function QRShare({ url, ...props }) {
   return (
     <>
       <IconButton aria-label="share" onClick={handleOpen}>
-        <ShareIcon></ShareIcon>
+        <ShareIcon titleAccess="二维码"></ShareIcon>
       </IconButton>
       <Dialog
         open={open}
@@ -83,9 +72,8 @@ export default function QRShare({ url, ...props }) {
         <DialogContent className={classes.content}>
           <QRCode
             value={url}
-            size={128}
-            renderAs="svg"
-            imageSettings={{ src: logo, width: 30, height: 30 }}
+            size={200}
+            imageSettings={{ src: logo, width: 50, height: 50 }}
           />
         </DialogContent>
       </Dialog>

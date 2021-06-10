@@ -1,36 +1,29 @@
 import React from "react";
-import { Link as RouterLink, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useReactiveVar } from "@apollo/client";
 
 //mui
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 
 //style
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles } from "@material-ui/core/styles";
 
 //icons
-import SchoolIcon from "@material-ui/icons/School";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-
-// utils
-import clsx from "clsx";
 
 // local
 import { useAllVtours } from "../../../utils/hooks";
 import { userVar } from "../../../gql";
 import VtourIntro from "./VtourIntro";
 import VtourCard from "./VtourCard";
+import WaitingForMore from "./WaitingForMore";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
-    transform: "translateY(-15vh)",
+    transform: "translateY(-150px)",
+    marginBottom: "-132px",
   },
 }));
 
@@ -47,8 +40,6 @@ export default function VtourIndexPage(props) {
   if (data) {
     vtours = data.allVtours;
   }
-  const theme = useTheme();
-  const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
 
   if (error) {
     console.log(error);
@@ -57,7 +48,7 @@ export default function VtourIndexPage(props) {
 
   return vtours ? (
     <Box css={{ userSelect: "none" }}>
-      <VtourIntro user={user}></VtourIntro>
+      <VtourIntro user={user} totalVtourNumber={vtours.length}></VtourIntro>
       <Container maxWidth="lg" disableGutters className={classes.cardContainer}>
         {vtours.map((vtour) => (
           <VtourCard
@@ -67,6 +58,7 @@ export default function VtourIndexPage(props) {
           ></VtourCard>
         ))}
       </Container>
+      {/* <WaitingForMore></WaitingForMore> */}
     </Box>
   ) : null;
 }

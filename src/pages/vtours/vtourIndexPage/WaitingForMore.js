@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink, useParams, Redirect } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 //mui
 import Button from "@material-ui/core/Button";
@@ -13,13 +13,12 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 //icons
 import SchoolIcon from "@material-ui/icons/School";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
 // utils
 import clsx from "clsx";
 
 // local
-import { useVtourById } from "../../../utils/hooks";
-import { WysiwygViewer } from "../../../components";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
@@ -41,30 +40,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VtourDetailPage(props) {
+export default function WaitingForMore(props) {
   const classes = useStyles();
-  const { vtourId } = useParams();
-  let vtour = null;
-  const { loading, error, data } = useVtourById(vtourId);
-
-  if (data) {
-    vtour = data.Vtour;
-
-    //dev
-    console.log(vtour);
-  }
   const theme = useTheme();
   const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
 
-  if (error) {
-    console.log(error);
-    return <Redirect to="/vtours"></Redirect>;
-  }
   return (
-    vtour && (
-      <Box>
-        <WysiwygViewer content={vtour.content}></WysiwygViewer>
-      </Box>
-    )
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      color="secondary.light"
+      fontSize="2rem"
+    >
+      <Typography variant="h6" color="inherit" disableGutters>
+        更多实习，敬请期待
+      </Typography>
+      <MoreHorizIcon fontSize="inherit"></MoreHorizIcon>
+    </Box>
   );
 }

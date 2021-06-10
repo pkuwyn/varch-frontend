@@ -5,7 +5,6 @@ import { Link as RouterLink, useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -30,6 +29,11 @@ import Box from "@material-ui/core/Box";
 const iconColorMap = { pano: "primary", model: "secondary", html: "tertiary" };
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    "&:not(:last-child)": {
+      marginBottom: theme.spacing(4),
+    },
+  },
   root: {
     display: "flex",
     [theme.breakpoints.down("sm")]: {
@@ -74,8 +78,6 @@ const useStyles = makeStyles((theme) => ({
 export default function VtourCard({ vtour, finished }) {
   const { id, learningTime, order, name, summary, tourType, tourImage, url } =
     vtour;
-  console.log(vtour);
-  console.log(finished);
   const classes = useStyles({ tourType, finished });
   const theme = useTheme();
   const matchSmDown = useMediaQuery(theme.breakpoints.down("sm"));
@@ -92,7 +94,13 @@ export default function VtourCard({ vtour, finished }) {
   );
   const history = useHistory();
   return (
-    <Box width={1} mx="auto" mb={4} px={[1, 2, 4, 8]} maxWidth={[500, 600, 1]}>
+    <Box
+      width={1}
+      mx="auto"
+      px={[1, 2, 4, 8]}
+      maxWidth={[500, 600, 1]}
+      className={classes.container}
+    >
       <Card className={classes.root}>
         {matchSmDown || cardImage}
 
