@@ -1,5 +1,6 @@
 import React from "react";
 import { Link as RouterLink, Redirect } from "react-router-dom";
+import { useReactiveVar } from "@apollo/client";
 
 //mui
 import Button from "@material-ui/core/Button";
@@ -20,30 +21,27 @@ import clsx from "clsx";
 
 // local
 import { useAllVtours } from "../../../utils/hooks";
+import { userVar } from "../../../gql";
+import VtourIntro from "./VtourIntro";
 import VtourCard from "./VtourCard";
+
 //box import for high priority
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    marginTop: "1rem",
-    fontWeight: 700,
-    letterSpacing: "4px",
-    fontSize: theme.typography.h5.fontSize,
-    marginRight: "1rem",
-  },
-  secondActionButton: {
-    borderWidth: 2,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
-    },
+  cardContainer: {
+    transform: "translateY(-15vh)",
   },
 }));
 
 export default function VtourIndexPage(props) {
   const classes = useStyles();
-
+  const { user } = useReactiveVar(userVar);
+  const vtourFinished = (id) =>
+    user
+      ? user.vtoursFinished.map((vtour) => vtour.id).indexOf(id) !== -1
+      : false;
+  console.log(user);
   let vtours;
   const { data, error } = useAllVtours();
   if (data) {
@@ -58,10 +56,15 @@ export default function VtourIndexPage(props) {
   }
 
   return vtours ? (
-    <Box>
-      <Container maxWidth="lg" disableGutters>
+    <Box css={{ userSelect: "none" }}>
+      <VtourIntro user={user}></VtourIntro>
+      <Container maxWidth="lg" disableGutters className={classes.cardContainer}>
         {vtours.map((vtour) => (
-          <VtourCard key={vtour.id} vtour={vtour}></VtourCard>
+          <VtourCard
+            key={vtour.id}
+            vtour={vtour}
+            finished={vtourFinished(vtour.id)}
+          ></VtourCard>
         ))}
       </Container>
     </Box>

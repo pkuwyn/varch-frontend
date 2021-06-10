@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  useQuery,
-  useMutation,
-  useLazyQuery,
-  useReactiveVar,
-} from "@apollo/client";
+import { useReactiveVar } from "@apollo/client";
 import { userVar } from "./gql";
 import {
   Switch,
@@ -40,33 +35,31 @@ export default function App(props) {
     user && (
       <Box display="flex" flexDirection="column">
         <Header></Header>
-        <div>
-          <Switch>
-            <Route path="/account">
-              <Account></Account>
-            </Route>
-            <Route path="/courses">
-              <Courses></Courses>
-            </Route>
-            <Route path="/vtours">
-              <Vtours></Vtours>
-            </Route>
-            <Route path="/virtual-excavation">
-              <VirtualExcavationPage></VirtualExcavationPage>
-            </Route>
+        <Switch>
+          <Route path="/account">
+            <Account></Account>
+          </Route>
+          <Route path="/courses">
+            <Courses></Courses>
+          </Route>
+          <Route path="/vtours">
+            <Vtours></Vtours>
+          </Route>
+          <Route path="/virtual-excavation">
+            <VirtualExcavationPage></VirtualExcavationPage>
+          </Route>
 
-            {/* dev Only */}
-            <Route exact path="/d">
-              <DesignSystem></DesignSystem>
-            </Route>
+          {/* dev Only */}
+          <Route exact path="/d">
+            <DesignSystem></DesignSystem>
+          </Route>
 
-            <Route exact path="/">
-              <LandingPage></LandingPage>
-            </Route>
+          <Route exact path="/">
+            <LandingPage></LandingPage>
+          </Route>
 
-            <Redirect to="/"></Redirect>
-          </Switch>
-        </div>
+          <Redirect to="/"></Redirect>
+        </Switch>
         {/* <Footer></Footer> */}
       </Box>
     )

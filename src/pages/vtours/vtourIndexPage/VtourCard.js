@@ -4,7 +4,6 @@ import { Link as RouterLink, useHistory } from "react-router-dom";
 //mui
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -12,19 +11,18 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
 //style
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 //icons
-import ShareIcon from "@material-ui/icons/Share";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 // utils
-import clsx from "clsx";
 
 // local
 import { iconSet } from "../config";
+import { QRShare } from "../../../components";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
@@ -34,20 +32,23 @@ const iconColorMap = { pano: "primary", model: "secondary", html: "tertiary" };
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
   },
   cardMedia: {
     flexBasis: "40%",
-    height: 300,
+    minHeight: 300,
     cursor: "pointer",
     clipPath: `polygon(0 0, 100% 0%, 90% 100%, 0% 100%)`,
     transition: "all 0.5s",
 
     "&:hover": {
       transform: "scale(1.05)",
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      clipPath: "unset",
     },
   },
   avatar: {
@@ -62,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
     fontWeight: 700,
     letterSpacing: "2px",
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
     "&:hover": {
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.common.white,
@@ -70,41 +71,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VtourCard({ vtour }) {
+export default function VtourCard({ vtour, finished }) {
   const { id, learningTime, order, name, summary, tourType, tourImage, url } =
     vtour;
   console.log(vtour);
-  const classes = useStyles({ tourType });
+  console.log(finished);
+  const classes = useStyles({ tourType, finished });
   const theme = useTheme();
-  const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchSmDown = useMediaQuery(theme.breakpoints.down("sm"));
+
+  //cardMedia in different places
+  const cardImage = (
+    <CardMedia
+      image={`${process.env.REACT_APP_MEDIA_URI}${tourImage.publicUrl}`}
+      className={classes.cardMedia}
+      onClick={() => {
+        history.push(`./vtours/${id}`);
+      }}
+    ></CardMedia>
+  );
   const history = useHistory();
   return (
-    <Box
-      color="secondary.light"
-      width={1}
-      px={{
-        xs: 1,
-        sm: 2,
-        md: 4,
-        lg: 6,
-      }}
-      mb={4}
-    >
+    <Box width={1} mx="auto" mb={4} px={[1, 2, 4, 8]} maxWidth={[500, 600, 1]}>
       <Card className={classes.root}>
-        <CardMedia
-          image={`${process.env.REACT_APP_MEDIA_URI}${tourImage.publicUrl}`}
-          className={classes.cardMedia}
-          onClick={() => {
-            history.push(`./vtours/${id}`);
-          }}
-        ></CardMedia>
+        {matchSmDown || cardImage}
 
         <Box
           flexBasis="60%"
           display="flex"
           flexDirection="column"
-          justifyContent="space-evenly"
-          height={300}
+          justifyContent="space-between"
         >
           <CardHeader
             avatar={
@@ -115,14 +111,22 @@ export default function VtourCard({ vtour }) {
             titleTypographyProps={{
               variant: "h5",
             }}
-            action={
-              <IconButton aria-label="share">
-                <ShareIcon></ShareIcon>
-              </IconButton>
-            }
+            action={<QRShare title="扫码实习" url={url} />}
             title={name}
-            subheader={`大约需要${learningTime}分钟`}
+            subheader={
+              <>
+                {`大约需要${learningTime}分钟`}
+                {finished && (
+                  <Box color="success.main" display="flex" alignItems="center">
+                    <CheckCircleIcon fontSize="inherit"></CheckCircleIcon>
+                    已完成
+                  </Box>
+                )}
+              </>
+            }
           />
+
+          {matchSmDown && cardImage}
 
           <CardContent>
             <Typography
@@ -139,8 +143,10 @@ export default function VtourCard({ vtour }) {
               className={classes.readMore}
               variant="outlined"
               color="primary"
+              component={RouterLink}
+              to={`/vtours/${id}`}
             >
-              开始学习
+              开始实习
             </Button>
           </CardActions>
         </Box>

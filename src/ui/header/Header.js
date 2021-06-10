@@ -8,7 +8,7 @@ import { Link as RouterLink, useRouteMatch } from "react-router-dom";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
-import logo from "../../assets/logos/logo2.png";
+import logo from "../../assets/logos/logo.png";
 
 //local
 import ElevationScroll from "../../utils/ElevationScroll";
