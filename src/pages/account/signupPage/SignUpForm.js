@@ -43,7 +43,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 export default function LoginForm() {
   const classes = useStyle();
-  const signupMutation = useSignUp("/account/login");
+  const signupMutation = useSignUp("/account/verify/verify");
 
   const formik = useFormik({
     initialValues: {

@@ -13,7 +13,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProgressBar({ total, finished, ...props }) {
+export default function ProgressBar({
+  total,
+  finished,
+  progressText,
+  children,
+  ...props
+}) {
   const classes = useStyles();
 
   return (
@@ -24,9 +30,7 @@ export default function ProgressBar({ total, finished, ...props }) {
         className={classes.progressBar}
         {...props}
       />
-      <Typography variant="body2" color="initial">
-        {`已完成${finished}/${total}`}
-      </Typography>
+      {children}
     </>
   );
 }

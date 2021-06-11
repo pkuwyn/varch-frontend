@@ -64,7 +64,11 @@ export default function VtourIntro({ user, totalVtourNumber }) {
             total={totalVtourNumber}
             finished={user.vtoursFinished.length}
             color="secondary"
-          ></ProgressBar>
+          >
+            <Typography variant="body2" color="initial">
+              {`已完成${user.vtoursFinished.length}/${totalVtourNumber}`}
+            </Typography>
+          </ProgressBar>
         </Box>
       )}
     </Box>

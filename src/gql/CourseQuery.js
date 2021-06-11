@@ -45,3 +45,11 @@ export const GET_LONGEST_COURSE = gql`
     }
   }
 `;
+
+export const GET_COURSES_COUNT = gql`
+  query getCoursesCount {
+    _allCoursesMeta {
+      count
+    }
+  }
+`;

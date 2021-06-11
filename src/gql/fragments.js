@@ -34,6 +34,7 @@ export const USERS_FIELDS = gql`
     vtoursFinished {
       id
     }
+    unityFinished
   }
 `;
 

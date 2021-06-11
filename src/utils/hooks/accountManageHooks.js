@@ -142,6 +142,19 @@ export function useVerifyEmail(redirectUrl) {
           variant: "success",
           key: "email-verify-success",
         });
+
+        //user data refetch
+        client
+          .query({
+            query: CURRENT_USER,
+            //important no-cache
+            fetchPolicy: "no-cache",
+          })
+          .then((result) => {
+            console.log(result);
+            userVar({ user: result.data.authenticatedUser });
+          });
+
         if (redirectUrl) {
           history.push(redirectUrl);
         }

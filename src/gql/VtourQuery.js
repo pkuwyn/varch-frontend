@@ -20,6 +20,14 @@ export const GET_VTOUR_BY_ID = gql`
   }
 `;
 
+export const GET_VTOURS_COUNT = gql`
+  query getVtoursCount {
+    _allVtoursMeta {
+      count
+    }
+  }
+`;
+
 export const GET_LONGEST_VTOUR = gql`
   query getLongestVtour {
     allVtours(sortBy: learningTime_DESC, first: 1) {

@@ -14,6 +14,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
+import ErrorIcon from "@material-ui/icons/Error";
 //Hooks
 import { useLogout } from "../../utils/hooks";
 
@@ -47,7 +48,7 @@ export default function AccountMenuIconButton({ iconProps, user }) {
         <AccountCircleIcon {...iconProps}></AccountCircleIcon>
       </IconButton>
       <Menu
-        id="simple-menu"
+        id="account-menu-popup"
         anchorEl={anchorEl}
         getContentAnchorEl={null}
         anchorOrigin={{
@@ -80,6 +81,19 @@ export default function AccountMenuIconButton({ iconProps, user }) {
               <SupervisorAccountIcon />
             </ListItemIcon>
             <ListItemText primary="管理后台" />
+          </MenuItem>
+        ) : null}
+
+        {!user.verified ? (
+          <MenuItem
+            onClick={handleClose}
+            component={RouterLink}
+            to="/account/verify/verify"
+          >
+            <ListItemIcon classes={{ root: classes.iconRoot }}>
+              <ErrorIcon style={{ color: "red" }} />
+            </ListItemIcon>
+            <ListItemText primary="验证邮箱" />
           </MenuItem>
         ) : null}
 
