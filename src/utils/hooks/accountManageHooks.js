@@ -10,6 +10,7 @@ import client, {
   SEND_VERIFY_CODE,
   VERIFY_EMAIL,
   RESET_PASSWORD,
+  UPDATE_CURRENT_USER,
 } from "../../gql";
 import { useHistory } from "react-router-dom";
 
@@ -80,13 +81,40 @@ export function useRemoteUser() {
   return null;
 }
 
+export function useUpdateCurrentUser({ showSnackBar }) {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [updateCurrentUserMutation] = useMutation(UPDATE_CURRENT_USER, {
+    onCompleted: (data) => {
+      console.log(data);
+      if (showSnackBar) {
+        enqueueSnackbar(`个人信息更新成功`, {
+          variant: "success",
+          key: "update-current-user-success",
+        });
+      }
+
+      userVar({ user: data.updateAuthenticatedUser });
+    },
+    onError: (error) => {
+      console.log(error);
+      if (showSnackBar) {
+        enqueueSnackbar("更新个人信息失败", {
+          variant: "error",
+          key: "update-current-user--fail",
+        });
+      }
+    },
+  });
+
+  return updateCurrentUserMutation;
+}
 export function useSignUp(redirectUrl) {
   const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
 
   const [signupMutation] = useMutation(SIGNUP, {
     onCompleted: (data) => {
-      console.log(data);
       enqueueSnackbar(`${data.createUser.email} 注册成功`, {
         variant: "success",
         key: "signup-success",

@@ -51,7 +51,6 @@ export const QUESTION_FIELDS = gql`
     d
     order
     questionImage {
-      path
       publicUrl
     }
   }

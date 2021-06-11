@@ -128,9 +128,18 @@ theme.mixins.buttonLabelWithArrow = {
     opacity: 1,
   },
 };
-
+theme.mixins.childrenMargin = {
+  "& > *:not(:last-child)": {
+    marginBottom: theme.spacing(4),
+  },
+};
 //全局配置所见即所得文章内容显示方式
 theme.tinymce = {
+  "& table": {
+    maxWidth: "100% ",
+    tableLayout: "fixed",
+    wordBreak: "break-all",
+  },
   "& img": {
     maxWidth: "80%",
     // objectFit: "scale-down",

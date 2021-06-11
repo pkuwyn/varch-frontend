@@ -13,7 +13,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // local
 import { useAllVtours } from "../../../utils/hooks";
 import { userVar } from "../../../gql";
-import VtourIntro from "./VtourIntro";
+import VtoursIntro from "./VtoursIntro";
 import VtourCard from "./VtourCard";
 import WaitingForMore from "./WaitingForMore";
 
@@ -48,7 +48,7 @@ export default function VtourIndexPage(props) {
 
   return vtours ? (
     <Box css={{ userSelect: "none" }}>
-      <VtourIntro user={user} totalVtourNumber={vtours.length}></VtourIntro>
+      <VtoursIntro user={user} totalVtourNumber={vtours.length}></VtoursIntro>
       <Container maxWidth="lg" disableGutters className={classes.cardContainer}>
         {vtours.map((vtour) => (
           <VtourCard

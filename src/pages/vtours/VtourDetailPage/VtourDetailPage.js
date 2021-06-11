@@ -1,5 +1,6 @@
 import React from "react";
 import { Link as RouterLink, useParams, Redirect } from "react-router-dom";
+import { useReactiveVar } from "@apollo/client";
 
 //mui
 import Button from "@material-ui/core/Button";
@@ -18,57 +19,76 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import clsx from "clsx";
 
 // local
+import { userVar } from "../../../gql";
 import { useVtourById } from "../../../utils/hooks";
+import VtourIntro from "./VtourIntro";
 import { WysiwygViewer } from "../../../components";
+import { Question } from "../../../components";
 import VtourIframe from "./VtourIframe";
+
 //box import for high priority
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    marginTop: "1rem",
-    fontWeight: 700,
-    letterSpacing: "4px",
-    fontSize: theme.typography.h5.fontSize,
-    marginRight: "1rem",
-  },
-  secondActionButton: {
-    borderWidth: 2,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
-    },
+  questionContainer: {
+    ...theme.mixins.childrenMargin,
   },
 }));
 
 export default function VtourDetailPage(props) {
   const classes = useStyles();
+  const { user } = useReactiveVar(userVar);
+
   const { vtourId } = useParams();
   let vtour = null;
-  const { loading, error, data } = useVtourById(vtourId);
+  const { error, data } = useVtourById(vtourId);
 
   if (data) {
     vtour = data.Vtour;
-
-    //dev
     console.log(vtour);
   }
-  const theme = useTheme();
-  const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
 
+  // const theme = useTheme();
+  // const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
   if (error) {
     console.log(error);
     return <Redirect to="/vtours"></Redirect>;
   }
+
   return (
     vtour && (
       <Box>
+        <VtourIntro vtour={vtour} user={user}></VtourIntro>
         <VtourIframe
           tourImage={vtour.tourImage}
           url={vtour.url}
           title={vtour.name}
+          boxProps={{
+            css: {
+              transform: "translateY(-150px)",
+              marginBottom: "-132px",
+            },
+          }}
         ></VtourIframe>
-        <WysiwygViewer content={vtour.content}></WysiwygViewer>
+        <WysiwygViewer
+          content={vtour.content}
+          boxProps={{
+            maxWidth: "100%",
+            width: 960,
+            // overflow: "hidden",
+          }}
+        ></WysiwygViewer>
+
+        <Box
+          maxWidth="100%"
+          width={960}
+          mx="auto"
+          className={classes.questionContainer}
+        >
+          {vtour.questions.map((question) => (
+            <Question key={question.id} question={question}></Question>
+          ))}
+        </Box>
       </Box>
     )
   );

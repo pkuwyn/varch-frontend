@@ -20,13 +20,11 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 // utils
 
 // local
-import { iconSet } from "../config";
+import { iconSet, iconColorMap } from "../config";
 import { QRShare } from "../../../components";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
-
-const iconColorMap = { pano: "primary", model: "secondary", html: "tertiary" };
 
 const useStyles = makeStyles((theme) => ({
   container: {

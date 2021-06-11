@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VtourIframe({ url, tourImage, title }) {
+export default function VtourIframe({ url, tourImage, title, boxProps }) {
   const [showIframe, setShowIframe] = React.useState(false);
   const handleClick = () => {
     setShowIframe(true);
@@ -59,23 +59,28 @@ export default function VtourIframe({ url, tourImage, title }) {
   return (
     <Box
       width="100%"
-      maxWidth={1280}
+      maxWidth={960}
+      height={[300, 600]}
       mx="auto"
       className={classes.iframeContainer}
       display="flex"
       justifyContent="center"
       alignItems="center"
+      {...boxProps}
     >
-      <img
-        src={`${process.env.REACT_APP_MEDIA_URI}${tourImage.publicUrl}`}
-        alt={title}
-        width="100%"
-        style={{
+      <Box
+        width={1}
+        height={[300, 600]}
+        css={{
+          backgroundImage: `url(${process.env.REACT_APP_MEDIA_URI}${tourImage.publicUrl})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
           display: showIframe ? "none" : "block",
         }}
-      />
+      ></Box>
       {showIframe ? (
-        <Box width={1} height={[300, 600, 900]}>
+        <Box width={1} height={[300, 600]}>
           <iframe
             src={url}
             frameborder="0"

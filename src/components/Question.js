@@ -1,6 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { Editor } from "@tinymce/tinymce-react";
+
 //mui
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
@@ -23,34 +23,42 @@ import clsx from "clsx";
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  editorContainer: {
-    ...theme.tinymce,
+  questionImage: {
+    width: "80%",
+    margin: "auto",
+    display: "block",
   },
 }));
 
-export default function WysiwygViewer({ content, boxProps }) {
+export default function Question({ question, boxProps }) {
   const classes = useStyles();
+
+  const { content, questionImage } = question;
+
+  console.log(question);
   const theme = useTheme();
   const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <Box
-      px={[1, 2, 0]}
-      mx="auto"
-      className={classes.editorContainer}
       {...boxProps}
+      bgcolor="#e1f5fe"
+      p={[1, 2, 4]}
+      borderRadius={4}
+      boxShadow={1}
     >
-      <Editor
-        inline={true}
-        tagName="article"
-        disabled
-        initialValue={content}
-        init={{
-          content_style: `
-            body { font-family:Helvetica,Arial,sans-serif; font-size:14px };
-            `,
-        }}
-      />
+      {questionImage && (
+        <img
+          src={`${process.env.REACT_APP_MEDIA_URI}${questionImage.publicUrl}`}
+          alt="测试题干图"
+          className={classes.questionImage}
+        />
+      )}
+
+      <Typography variant="h6" color="initial">
+        {content}
+      </Typography>
+      {/* <p>{JSON.stringify(question)}</p> */}
     </Box>
   );
 }

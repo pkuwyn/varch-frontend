@@ -61,3 +61,12 @@ export const RESET_PASSWORD = gql`
     }
   }
 `;
+
+export const UPDATE_CURRENT_USER = gql`
+  ${USERS_FIELDS}
+  mutation updateCurrentUser($data: UserUpdateInput!) {
+    updateAuthenticatedUser(data: $data) {
+      ...UsersFields
+    }
+  }
+`;

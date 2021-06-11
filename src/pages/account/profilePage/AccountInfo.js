@@ -21,6 +21,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import clsx from "clsx";
 
 // local
+import { useUpdateCurrentUser } from "../../../utils/hooks";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
@@ -35,15 +36,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
   },
   form: {
-    "& > *:not(:last-child)": {
-      marginBottom: theme.spacing(4),
-    },
+    ...theme.mixins.childrenMargin,
   },
   verifyButton: {
     backgroundColor: theme.palette.warning.main,
     marginLeft: theme.spacing(2),
+    flexShrink: 0,
   },
-  submitButton: {},
 }));
 
 //validate form input
@@ -60,6 +59,10 @@ const validate = (values) => {
 
 export default function AccountInfo({ user }) {
   const classes = useStyles();
+  const updateCurrentUserMutation = useUpdateCurrentUser({
+    showSnackBar: true,
+  });
+
   const formik = useFormik({
     initialValues: {
       name: user.name,
@@ -67,6 +70,7 @@ export default function AccountInfo({ user }) {
     validate,
     onSubmit: (values) => {
       console.log(values);
+      updateCurrentUserMutation({ variables: { data: values } });
     },
   });
   return (
@@ -90,49 +94,37 @@ export default function AccountInfo({ user }) {
               disabled
               value={user.email}
             />
-            {!user.verified ? (
-              <Button
-                variant="contained"
-                className={classes.verifyButton}
-                size="small"
-                component={RouterLink}
-                to="/account/verify/verify"
-                style={{
-                  flexShrink: 0,
-                }}
-              >
-                验证邮箱
-              </Button>
-            ) : (
-              <Typography
-                variant="body1"
-                style={{ color: "green", flexShrink: 0 }}
-                gutterBottom={false}
-              >
-                已验证
-              </Typography>
-            )}
-          </Box>
 
-          <TextField
-            id="name"
-            name="name"
-            label="昵称"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name && formik.errors.name}
-          />
-          <br />
-          <Button
-            color="primary"
-            variant="contained"
-            size="small"
-            type="submit"
-            className={classes.submitButton}
-          >
-            更新信息
-          </Button>
+            <Button
+              variant="contained"
+              className={classes.verifyButton}
+              disabled={user.verified}
+              size="small"
+              component={RouterLink}
+              to="/account/verify/verify"
+            >
+              {user.verified ? "已验证" : "验证邮箱"}
+            </Button>
+          </Box>
+          <Box display="flex" alignItems="center">
+            <TextField
+              id="name"
+              name="name"
+              label="昵称"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              error={formik.touched.name && Boolean(formik.errors.name)}
+              helperText={formik.touched.name && formik.errors.name}
+            />
+            <Button
+              variant="contained"
+              className={classes.verifyButton}
+              size="small"
+              type="submit"
+            >
+              修改昵称
+            </Button>
+          </Box>
         </form>
       </Box>
     </Paper>

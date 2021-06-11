@@ -15,22 +15,12 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    // backgroundImage: `linear-gradient(to top, ${theme.palette.primary.dark} 0%,transparent 100%),url(/assets/img/vtours/bg-desktop.jpg)`,
     backgroundImage: `url(${square})`,
-    // backgroundSize: "cover",
-    // backgroundPosition: "top",
     backgroundRepeat: "repeat",
-    [theme.breakpoints.down("sm")]: {
-      //   backgroundImage: `linear-gradient(to top, ${theme.palette.primary.dark} 0%,transparent 100%),url(/assets/img/vtours/bg-mobile.jpg)`,
-    },
-  },
-  header: {
-    opacity: 1,
-    color: theme.palette.common.black,
   },
 }));
 
-export default function VtourIntro({ user, totalVtourNumber }) {
+export default function VtoursIntro({ user, totalVtourNumber }) {
   const classes = useStyles();
 
   return (

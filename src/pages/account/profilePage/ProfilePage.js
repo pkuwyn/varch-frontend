@@ -41,17 +41,9 @@ export default function ProfilePage(props) {
   const { user } = useReactiveVar(userVar);
 
   //获取课程总数量
-  const {
-    loading: coursesCountLoading,
-    error: coursesCountError,
-    data: coursesCountData,
-  } = useCoursesCount();
+  const { data: coursesCountData } = useCoursesCount();
 
-  const {
-    loading: vtoursCountLoading,
-    error: vtoursCountError,
-    data: vtoursCountData,
-  } = useVtoursCount();
+  const { data: vtoursCountData } = useVtoursCount();
 
   return !user ? (
     <Redirect to="./account/login"></Redirect>

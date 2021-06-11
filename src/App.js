@@ -35,6 +35,10 @@ export default function App(props) {
     user && (
       <Box display="flex" flexDirection="column">
         <Header></Header>
+
+        {/* dev */}
+        {/* <p>{JSON.stringify(user)}</p> */}
+
         <Switch>
           <Route path="/account">
             <Account></Account>
