@@ -53,3 +53,21 @@ export const GET_COURSES_COUNT = gql`
     }
   }
 `;
+
+export const GET_MINIMAL_COURSES_COUNT = gql`
+  query getMinimalCoursesCount {
+    _allCoursesMeta(where: { children_none: { father_is_null: false } }) {
+      count
+    }
+  }
+`;
+
+export const GET_MINIMAL_CATEGORY_COURSES_COUNT = gql`
+  query getMiniMalCoursesCount($category: CourseCategoryType!) {
+    _allCoursesMeta(
+      where: { children_none: { father_is_null: false }, category: $category }
+    ) {
+      count
+    }
+  }
+`;

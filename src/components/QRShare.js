@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function QRShare({ url, ...props }) {
+  // console.log(url);
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -73,7 +74,7 @@ export default function QRShare({ url, ...props }) {
           <QRCode
             value={url}
             size={200}
-            imageSettings={{ src: logo, width: 50, height: 50 }}
+            // imageSettings={{ src: logo, width: 50, height: 50 }}
           />
         </DialogContent>
       </Dialog>

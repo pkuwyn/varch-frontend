@@ -24,13 +24,7 @@ ReactDOM.render(
           preventDuplicate
         >
           <CssBaseline />
-          <BrowserRouter
-            getUserConfirmation={(message, callback) => {
-              // this is the default behavior
-              const allowTransition = window.confirm(message);
-              callback(allowTransition);
-            }}
-          >
+          <BrowserRouter>
             <ScrollToTopOnRouteChange></ScrollToTopOnRouteChange>
 
             <App />

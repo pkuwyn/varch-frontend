@@ -16,48 +16,25 @@ import { LearnPage } from "./learnPage";
 import { SearchPage } from "./searchPage";
 import { TestPage } from "./testPage";
 
-const links = ["category", "learn", "search", "test"];
+const links = ["basic", "tools", "ymy", "learn"];
 
 export default function Courses() {
   const { path, url } = useRouteMatch();
   return (
-    <>
-      <Link to={url}>
-        <h2>Coruses</h2>
-      </Link>
+    <Switch>
+      <Route exact path={path}>
+        <CoursesIndexPage></CoursesIndexPage>
+      </Route>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-        }}
-      >
-        {links.map((path) => (
-          <Link to={`${url}/${path}`} key={path}>
-            {path}
-          </Link>
-        ))}
-      </div>
-      <hr />
-      <Switch>
-        <Route exact path={path}>
-          <CoursesIndexPage></CoursesIndexPage>
-        </Route>
+      <Route exact path={`${path}/:category(basic|tools|ymy)`}>
+        <CategoryPage></CategoryPage>
+      </Route>
 
-        <Route path={`${path}/category`}>
-          <CategoryPage></CategoryPage>
-        </Route>
-        <Route path={`${path}/learn`}>
-          <LearnPage></LearnPage>
-        </Route>
-        <Route path={`${path}/search`}>
-          <SearchPage></SearchPage>
-        </Route>
-        <Route path={`${path}/test`}>
-          <TestPage></TestPage>
-        </Route>
-        <Redirect to="/"></Redirect>
-      </Switch>
-    </>
+      <Route path={`${path}/learn/:id`}>
+        <LearnPage></LearnPage>
+      </Route>
+
+      <Redirect to="/"></Redirect>
+    </Switch>
   );
 }

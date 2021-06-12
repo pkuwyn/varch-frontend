@@ -19,6 +19,9 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import clsx from "clsx";
 
 // local
+import { useUpdateCurrentUser } from "../../../utils/hooks";
+
+import bg from "../../../assets/bg/shape-bg.png";
 import { userVar } from "../../../gql";
 import { useVtourById } from "../../../utils/hooks";
 import VtourIntro from "./VtourIntro";
@@ -39,17 +42,46 @@ export default function VtourDetailPage(props) {
   const classes = useStyles();
   const { user } = useReactiveVar(userVar);
 
+  //update course finished status
+  const updateCurrentUserMutation = useUpdateCurrentUser({
+    showSnackBar: false,
+  });
+
   const { vtourId } = useParams();
   let vtour = null;
   const { error, data } = useVtourById(vtourId);
 
   if (data) {
     vtour = data.Vtour;
-    console.log(vtour);
   }
 
-  // const theme = useTheme();
-  // const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
+  const vtourFinished = (id) =>
+    user
+      ? user.vtoursFinished.map((vtour) => vtour.id).indexOf(id) !== -1
+      : false;
+
+  const handleUpdateUserFinishedVtours = () => {
+    //未登录用户跳过
+    if (!user) {
+      // console.log("not login");
+
+      return null;
+    }
+
+    // 已学习用户跳过
+    if (vtourFinished(vtourId)) {
+      // console.log("allready finished");
+
+      return null;
+    }
+
+    const data = {
+      vtoursFinished: { connect: { id: vtourId } },
+    };
+    // console.log(data);
+    updateCurrentUserMutation({ variables: { data } });
+  };
+
   if (error) {
     console.log(error);
     return <Redirect to="/vtours"></Redirect>;
@@ -80,14 +112,38 @@ export default function VtourDetailPage(props) {
         ></WysiwygViewer>
 
         <Box
-          maxWidth="100%"
-          width={960}
-          mx="auto"
-          className={classes.questionContainer}
+          width={1}
+          css={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "repeat",
+          }}
         >
-          {vtour.questions.map((question) => (
-            <Question key={question.id} question={question}></Question>
-          ))}
+          <Box
+            mt={[2, 4, 6]}
+            mx="auto"
+            maxWidth="100%"
+            width={960}
+            px={[1, 2, 4]}
+            className={classes.questionContainer}
+          >
+            <Typography
+              variant="h5"
+              color="primary"
+              align="center"
+              style={{ fontWeight: 700 }}
+            >
+              实习自测
+            </Typography>
+            {vtour.questions.map((question) => (
+              <Question
+                key={question.id}
+                question={question}
+                handleUpdate={handleUpdateUserFinishedVtours}
+              ></Question>
+            ))}
+          </Box>
         </Box>
       </Box>
     )

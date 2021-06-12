@@ -25,7 +25,11 @@ import LearningStatus from "./LearningStatus";
 //box import for high priority
 import Box from "@material-ui/core/Box";
 
-import { useCoursesCount, useVtoursCount } from "../../../utils/hooks";
+import {
+  useCoursesCount,
+  useVtoursCount,
+  useMinimalCoursesCount,
+} from "../../../utils/hooks";
 import { ProgressBar } from "../../../components";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,8 +44,8 @@ export default function ProfilePage(props) {
   const classes = useStyles();
   const { user } = useReactiveVar(userVar);
 
-  //获取课程总数量
-  const { data: coursesCountData } = useCoursesCount();
+  //获取最小教学单元总数量
+  const { data: coursesCountData } = useMinimalCoursesCount();
 
   const { data: vtoursCountData } = useVtoursCount();
 
@@ -65,7 +69,11 @@ export default function ProfilePage(props) {
         <LearningStatus
           totalCourses={coursesCountData._allCoursesMeta.count}
           // coursesFinished={coursesCountData._allCoursesMeta.count}
-          coursesFinished={user.coursesFinished.length}
+
+          //过滤掉不是最小教学单元的课程
+          coursesFinished={
+            user.coursesFinished.filter(({ isMinimal }) => isMinimal).length
+          }
           totalVtours={vtoursCountData._allVtoursMeta.count}
           // vtoursFinished={vtoursCountData._allVtoursMeta.count}
           vtoursFinished={user.vtoursFinished.length}

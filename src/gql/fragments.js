@@ -30,6 +30,7 @@ export const USERS_FIELDS = gql`
     verified
     coursesFinished {
       id
+      isMinimal
     }
     vtoursFinished {
       id

@@ -33,7 +33,7 @@ export default function VtourIntro({ user, vtour }) {
       : false;
   return (
     <Box
-      pt={4}
+      pt={[4, 8]}
       pb={["150px", "200px"]}
       px={[1, 2, 4, 6]}
       className={classes.container}

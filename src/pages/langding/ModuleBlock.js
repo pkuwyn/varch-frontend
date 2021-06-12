@@ -22,6 +22,8 @@ import FunctionsIcon from "@material-ui/icons/Functions";
 import clsx from "clsx";
 
 // local
+import { modules } from "./config";
+
 import bg from "../../assets/bg/shape-bg.png";
 import ModuleIntroCard from "./ModuleIntroCard";
 
@@ -64,45 +66,22 @@ export default function ModuleBlock(props) {
             教学内容
           </Typography>
         </Grid>
-        <Grid item xs={12} md className={classes.girdItem}>
-          <ModuleIntroCard
-            title="基础知识"
-            subtitle="田野考古基础理论知识"
-            iconComponent={<SchoolIcon color="inherit" />}
-            features={[
-              "田野考古基础理论",
-              "常见田野考古工具",
-              "圆明园考古工作概况",
-            ]}
-            link="/courses"
-            headerImage="/assets/img/landing/tf1.jpg"
-            color={theme.palette.primary.main}
-          ></ModuleIntroCard>
-        </Grid>
 
-        <Grid item xs={12} md className={classes.girdItem}>
-          <ModuleIntroCard
-            title="虚拟实习"
-            subtitle="在线考古遗址踏查实习"
-            iconComponent={<FlightTakeoffIcon color="inherit" />}
-            features={["考古遗址3D漫游", "考古遗址全景漫游", "遗址知识点讲解"]}
-            link="/vtours"
-            headerImage="/assets/img/landing/module2.jpg"
-            color={theme.palette.tertiary.dark}
-          ></ModuleIntroCard>
-        </Grid>
-
-        <Grid item xs={12} md className={classes.girdItem}>
-          <ModuleIntroCard
-            title="虚拟发掘"
-            subtitle="建筑遗址虚拟考古发掘"
-            iconComponent={<AppsIcon color="inherit" />}
-            features={["流程化发掘引导", "高自由度发掘操作", "遗迹现象解读"]}
-            link="/virtual-excavation"
-            headerImage="/assets/img/landing/module3.jpg"
-            color={theme.palette.secondary.light}
-          ></ModuleIntroCard>
-        </Grid>
+        {modules.map(
+          ({ title, subtitle, link, headerImage, features, icon, color }) => (
+            <Grid item xs={12} md className={classes.girdItem} key={title}>
+              <ModuleIntroCard
+                title={title}
+                subtitle={subtitle}
+                iconComponent={icon}
+                features={features}
+                link={link}
+                headerImage={headerImage}
+                color={theme.palette[color].main}
+              ></ModuleIntroCard>
+            </Grid>
+          )
+        )}
       </Grid>
     </Box>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink, useParams } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 //mui
 import Button from "@material-ui/core/Button";
@@ -39,11 +39,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CategoryPage(props) {
+export default function CourseCard(props) {
   const classes = useStyles();
-  const { category } = useParams();
   const theme = useTheme();
   const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
 
-  return <Box>CategoryPage - {category}</Box>;
+  return <Box></Box>;
 }

@@ -75,8 +75,6 @@ export default function HeroBlock(props) {
           variant="h4"
           style={{
             fontWeight: 900,
-            // color: theme.palette.secondary.light,
-            // color: "#2B76DF",
           }}
         >
           虚拟仿真
@@ -100,6 +98,7 @@ export default function HeroBlock(props) {
             maxWidth: 500,
           }}
           paragraph
+          align={matchXsDown ? "center" : "left"}
         >
           本网站以虚拟仿真的模式提供田野考古知识教学，您可以学习田野考古理论知识，虚拟参观田野考古遗址，并动手完成一次虚拟的建筑遗址考古发掘
         </Typography>

@@ -15,13 +15,13 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 //icons
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 // utils
 
 // local
 import { iconSet, iconColorMap } from "../config";
 import { QRShare } from "../../../components";
+import { useMinimalCoursesOfCategoryCount } from "../../../utils/hooks";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   avatar: {
-    color: (props) => theme.palette[iconColorMap[props.tourType]].main,
+    color: (props) => theme.palette[iconColorMap[props.type]].main,
     backgroundColor: theme.palette.common.white,
   },
   summaryText: {
@@ -73,20 +73,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VtourCard({ vtour, finished }) {
-  const { id, learningTime, order, name, summary, tourType, tourImage, url } =
-    vtour;
-  const classes = useStyles({ tourType, finished });
+export default function CategoryCard({ category }) {
+  const { urlName, type, name, summary, tourType, categoryImage } = category;
+  const classes = useStyles({ type });
+
+  const { data: coursesCountOfCategory } =
+    useMinimalCoursesOfCategoryCount(type);
   const theme = useTheme();
   const matchSmDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   //cardMedia in different places
   const cardImage = (
     <CardMedia
-      image={`${process.env.REACT_APP_MEDIA_URI}${tourImage.publicUrl}`}
+      image={categoryImage}
       className={classes.cardMedia}
       onClick={() => {
-        history.push(`./vtours/${id}`);
+        history.push(`./courses/${urlName}`);
       }}
     ></CardMedia>
   );
@@ -112,28 +114,23 @@ export default function VtourCard({ vtour, finished }) {
             <CardHeader
               avatar={
                 <Avatar aria-label={tourType} className={classes.avatar}>
-                  {iconSet[tourType]}
+                  {iconSet[type]}
                 </Avatar>
               }
               titleTypographyProps={{
                 variant: "h5",
               }}
-              action={<QRShare title="扫码实习" url={url} />}
+              action={
+                <QRShare
+                  title="扫码进入专题"
+                  url={`${process.env.REACT_APP_HOMEPAGE_URI}/courses/${urlName}`}
+                />
+              }
               title={name}
               subheader={
-                <>
-                  {`大约需要${learningTime}分钟`}
-                  {finished && (
-                    <Box
-                      color="success.main"
-                      display="flex"
-                      alignItems="center"
-                    >
-                      <CheckCircleIcon fontSize="inherit"></CheckCircleIcon>
-                      已完成
-                    </Box>
-                  )}
-                </>
+                coursesCountOfCategory
+                  ? `本专题包含${coursesCountOfCategory._allCoursesMeta.count}小节`
+                  : ""
               }
             />
 
@@ -155,9 +152,9 @@ export default function VtourCard({ vtour, finished }) {
                 variant="outlined"
                 color="primary"
                 component={RouterLink}
-                to={`/vtours/${id}`}
+                to={`/courses/${urlName}`}
               >
-                开始实习
+                进入专题
               </Button>
             </CardActions>
           </Box>

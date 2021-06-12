@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function VtoursIntro({ user, totalVtourNumber }) {
+export default function CoursesIntro({ user, totalCourses }) {
   const classes = useStyles();
 
   return (
@@ -43,20 +43,24 @@ export default function VtoursIntro({ user, totalVtourNumber }) {
         style={{ fontFamily: "SimSun", fontWeight: 700 }}
         gutterBottom
       >
-        虚拟实习
+        基础知识
       </Typography>
       <Typography variant="body1" color="initial" style={{ maxWidth: "80%" }}>
-        参与以下虚拟田野考古实习项目，利用实景三维模型、全景漫游、交互网站等方式，进行考古遗址线上踏查实习
+        学习田野考古基础知识，包括田野考古基础理论、田野考古常用工具、圆明园田野考古工作介绍三个专题
       </Typography>
       {user && (
         <Box width="80%" maxWidth={600} mt={2}>
           <ProgressBar
-            total={totalVtourNumber}
-            finished={user.vtoursFinished.length}
+            total={totalCourses}
+            finished={
+              user.coursesFinished.filter(({ isMinimal }) => isMinimal).length
+            }
             color="secondary"
           >
             <Typography variant="body2" color="initial">
-              {`已完成${user.vtoursFinished.length}/${totalVtourNumber}`}
+              {`已完成${
+                user.coursesFinished.filter(({ isMinimal }) => isMinimal).length
+              }/${totalCourses}`}
             </Typography>
           </ProgressBar>
         </Box>

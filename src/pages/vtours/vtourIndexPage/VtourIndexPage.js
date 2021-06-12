@@ -34,7 +34,6 @@ export default function VtourIndexPage(props) {
     user
       ? user.vtoursFinished.map((vtour) => vtour.id).indexOf(id) !== -1
       : false;
-  console.log(user);
   let vtours;
   const { data, error } = useAllVtours();
   if (data) {

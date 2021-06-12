@@ -1,44 +1,64 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Link from "@material-ui/core/Link";
-import { Link as RouterLink, useLocation } from "react-router-dom";
-import { useTheme } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Hidden from "@material-ui/core/Hidden";
-import IconButton from "@material-ui/core/IconButton";
+import React from "react";
+import { useRouteMatch } from "react-router-dom";
+
+import Typography from "@material-ui/core/Typography";
+
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Box from "@material-ui/core/Box";
 
 //local import
 import logo from "../../assets/logos/logo.png";
-import { footLinkConfig } from "./footLinkConfig";
-import SiteMap from "./SiteMap";
-import QRCodeForCurrenttPage from "./QRCodeForCurrenttPage";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  footer: {
+    minHeight: "32px",
+  },
+}));
 
 export default function Footer() {
   const classes = useStyles();
-  return (
+  const match = useRouteMatch("/account");
+  const theme = useTheme();
+  const matchSmDown = useMediaQuery(theme.breakpoints.down(400));
+  return match ? null : (
     <Box
-      p={{ xs: 1, sm: 2, md: 3, lg: 4 }}
-      minHeight={300}
+      minHeight={32}
       bgcolor="grey.300"
       color="common.black"
       display="flex"
+      flexDirection={matchSmDown ? "column" : "row"}
+      justifyContent="center"
       alignItems="center"
+      component="footer"
+      className={classes.footer}
+      py="4px"
     >
-      <Grid container spacing={1}>
-        <Grid item xs={12} md={4}>
-          {/* <img src={logo} alt="" width={200} height={200} />
-           */}
-          <QRCodeForCurrenttPage></QRCodeForCurrenttPage>
-        </Grid>
-
-        <Grid item xs={12} md={8}>
-          <SiteMap linkConfig={footLinkConfig}></SiteMap>
-        </Grid>
-      </Grid>
+      <img
+        src={logo}
+        alt="logo"
+        width="24"
+        style={{
+          marginRight: 8,
+        }}
+      />
+      <Typography
+        variant="body1"
+        color="primary"
+        align="center"
+        gutterBottom={false}
+      >
+        Copyright©2021
+      </Typography>
+      <Typography
+        variant="body1"
+        color="primary"
+        align="center"
+        gutterBottom={false}
+      >
+        虚拟仿真田野考古
+      </Typography>
     </Box>
   );
 }
