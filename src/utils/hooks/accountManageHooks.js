@@ -137,7 +137,7 @@ export function useSignUp(redirectUrl) {
 
 export function useSendVCode() {
   const { enqueueSnackbar } = useSnackbar();
-  const history = useHistory();
+  // const history = useHistory();
 
   const [sendVCodeMutation] = useMutation(SEND_VERIFY_CODE, {
     onCompleted: (data) => {

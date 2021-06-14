@@ -1,7 +1,6 @@
 import React from "react";
 
 //mui
-import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
 //style

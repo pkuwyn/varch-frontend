@@ -1,25 +1,11 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 
 //mui
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
 //style
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-
-//icons
-import SchoolIcon from "@material-ui/icons/School";
-import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
-import ListIcon from "@material-ui/icons/List";
-import HomeIcon from "@material-ui/icons/Home";
-import AppsIcon from "@material-ui/icons/Apps";
-import FunctionsIcon from "@material-ui/icons/Functions";
-
-// utils
-import clsx from "clsx";
 
 // local
 import { modules } from "./config";

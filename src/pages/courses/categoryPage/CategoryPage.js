@@ -3,21 +3,17 @@ import { Link as RouterLink, useParams } from "react-router-dom";
 import { useReactiveVar } from "@apollo/client";
 
 //mui
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+
 import Container from "@material-ui/core/Container";
+import Fab from "@material-ui/core/Fab";
 
 //style
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles } from "@material-ui/core/styles";
 
 //icons
-import SchoolIcon from "@material-ui/icons/School";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 // utils
-import clsx from "clsx";
 
 // local
 import { categoryConfig } from "../config";
@@ -37,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
   cardContainer: {
     transform: "translateY(-150px)",
     marginBottom: "-132px",
+  },
+  fab: {
+    ...theme.mixins.returnFab,
   },
 }));
 
@@ -62,11 +61,18 @@ export default function CategoryPage(props) {
     categoryData.type
   );
 
-  const theme = useTheme();
-  const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
-
   return coursesCountOfCategory ? (
     <Box css={{ userSelect: "none" }} mb={[2, 4]}>
+      <Fab
+        aria-label="返回上一级"
+        className={classes.fab}
+        color="primary"
+        component={RouterLink}
+        size="small"
+        to="/courses"
+      >
+        <ArrowBackIcon></ArrowBackIcon>
+      </Fab>
       <CategoryIntro
         user={user}
         categoryData={categoryData}

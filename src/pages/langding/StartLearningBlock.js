@@ -18,9 +18,6 @@ import SchoolIcon from "@material-ui/icons/School";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import AppsIcon from "@material-ui/icons/Apps";
 
-// utils
-import clsx from "clsx";
-
 // local
 import startLearningBg from "../../assets/bg/start-learning.png";
 

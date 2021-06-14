@@ -1,9 +1,6 @@
 import React from "react";
-import { useMutation, useQuery } from "@apollo/client";
-import { useSnackbar } from "notistack";
+import { useQuery } from "@apollo/client";
 import { GET_VTOURS, GET_VTOUR_BY_ID, GET_VTOURS_COUNT } from "../../gql";
-
-import { useHistory } from "react-router-dom";
 
 export function useAllVtours() {
   const { loading, error, data } = useQuery(GET_VTOURS);

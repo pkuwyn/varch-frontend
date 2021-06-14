@@ -2,12 +2,10 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useFormik } from "formik";
-import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 
 import Box from "@material-ui/core/Box";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { useSignUp } from "../../../utils/hooks";
 
@@ -54,7 +52,6 @@ export default function LoginForm() {
     },
     validate,
     onSubmit: (values) => {
-      console.log(values);
       signupMutation({ variables: values });
     },
   });

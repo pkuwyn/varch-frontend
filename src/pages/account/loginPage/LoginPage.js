@@ -1,17 +1,13 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 
 import LoginForm from "./LoginForm";
 import Fade from "@material-ui/core/Fade";
 
-import Box from "@material-ui/core/Box";
-
 //LoginPage Layout import
 import { FullPageLayoutBox } from "../components";
 import LoginAnimation from "./LoginAnimation";
-import AccountStatus from "./AccountStatus";
+// import AccountStatus from "./AccountStatus";
 
 export default function LoginPage(props) {
   return (

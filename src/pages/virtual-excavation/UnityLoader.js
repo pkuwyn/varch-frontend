@@ -1,5 +1,4 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 
 //mui
 import Typography from "@material-ui/core/Typography";
@@ -11,7 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 //icons
 import GetAppIcon from "@material-ui/icons/GetApp";
 // utils
-import clsx from "clsx";
 
 // local
 

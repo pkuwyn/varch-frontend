@@ -5,20 +5,11 @@ import { useFormik } from "formik";
 //mui
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 
 //style
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-
-//icons
-import SchoolIcon from "@material-ui/icons/School";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-
-// utils
-import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
 
 // local
 import { useUpdateCurrentUser } from "../../../utils/hooks";

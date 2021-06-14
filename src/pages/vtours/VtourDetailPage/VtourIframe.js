@@ -1,28 +1,18 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 
 //mui
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+
 //style
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles } from "@material-ui/core/styles";
 
 //icons
-import SchoolIcon from "@material-ui/icons/School";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-
-// utils
-import clsx from "clsx";
 
 // local
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
-import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -52,8 +42,6 @@ export default function VtourIframe({ url, tourImage, title, boxProps }) {
     setShowIframe(true);
   };
   const classes = useStyles();
-  const theme = useTheme();
-  const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <Box

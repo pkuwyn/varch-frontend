@@ -7,7 +7,6 @@ import SvgIcon from "@material-ui/core/SvgIcon";
 import Container from "@material-ui/core/Container";
 //style
 import { makeStyles } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 //icons
 import CheckIcon from "@material-ui/icons/Check";

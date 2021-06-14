@@ -7,7 +7,7 @@ import { CategoryPage } from "./categoryPage";
 import { LearnPage } from "./learnPage";
 
 export default function Courses() {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
   return (
     <Switch>
       <Route exact path={path}>

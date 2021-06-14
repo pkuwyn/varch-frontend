@@ -1,6 +1,6 @@
 import React from "react";
-import { useMutation, useQuery } from "@apollo/client";
-import { useSnackbar } from "notistack";
+import { useQuery } from "@apollo/client";
+
 import {
   GET_COURSE_BY_ID,
   GET_FIRST_LEVEL_COURSES_BY_CATEGORY,

@@ -1,11 +1,7 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 
-import { useWindowSize } from "../../../utils/hooks";
-
 export function FullPageLayoutBox({ children, ...props }) {
-  const size = useWindowSize();
-
   return (
     <Box
       position="absolute"
@@ -18,7 +14,8 @@ export function FullPageLayoutBox({ children, ...props }) {
       flexDirection="column"
       zIndex={-100}
       overflow="hidden"
-      minHeight={size.height || 800}
+      minHeight="100vh"
+      height={900}
       {...props}
     >
       {children}

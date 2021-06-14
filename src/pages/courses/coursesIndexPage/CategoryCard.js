@@ -22,7 +22,7 @@ import ViewModuleIcon from "@material-ui/icons/ViewModule";
 
 // local
 import { iconSet, iconColorMap } from "../config";
-import { QRShare } from "../../../components";
+// import { QRShare } from "../../../components";
 import { useMinimalCoursesOfCategoryCount } from "../../../utils/hooks";
 
 //box import for high priority

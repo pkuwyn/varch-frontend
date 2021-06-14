@@ -1,6 +1,6 @@
-import { amber, indigo, brown, lightGreen } from "@material-ui/core/colors";
+import { indigo, brown, lightGreen } from "@material-ui/core/colors";
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
-import { unstable_createMuiStrictModeTheme } from "@material-ui/core";
+// import { unstable_createMuiStrictModeTheme } from "@material-ui/core";
 import { zhCN } from "@material-ui/core/locale";
 
 //color defination
@@ -34,6 +34,12 @@ let theme = createMuiTheme(
       },
       blockMargin: {
         marginTop: "2rem",
+      },
+      returnFab: {
+        position: "fixed",
+        top: 100,
+        left: 16,
+        zIndex: 1000,
       },
     },
     typography: {
@@ -137,28 +143,68 @@ theme.mixins.childrenMargin = {
 };
 //全局配置所见即所得文章内容显示方式
 theme.tinymce = {
+  "& *": {
+    fontFamily: `"Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif`,
+  },
   "& table": {
     maxWidth: "100% ",
     tableLayout: "fixed",
     wordBreak: "break-all",
   },
   "& img": {
-    maxWidth: "80%",
-    // objectFit: "scale-down",
+    maxWidth: 960,
+    width: "85%",
     height: "unset",
+    [theme.breakpoints.down("sm")]: {
+      width: "90%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "95%",
+    },
   },
   "& a": {
-    color: "green",
+    color: "blue",
+    transition: "all 0.5s",
+    "&:hover": {
+      backgroundColor: theme.palette.grey[300],
+      boxShadow: theme.shadows[1],
+    },
   },
-  "& p": {
-    fontSize: "1rem",
-    textIndent: "2em",
-  },
-  "& ol li": {
+  "& h1": {
     fontSize: "2rem",
-    color: "red",
+  },
+  "& h3": {
+    fontSize: "1.5rem",
+  },
+  "& h6": {
+    lineHeight: 0,
+    marginTop: "2px",
+
+    fontSize: "1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.9rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.8rem",
+    },
+
+    fontWeight: 700,
+    color: theme.palette.grey[500],
+  },
+  "& p,li": {
+    fontSize: "1.25rem",
+    textIndent: "2em",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.1rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1rem",
+    },
+  },
+  "& li": {
+    color: theme.palette.grey[600],
+    textIndent: 0,
   },
 };
-// console.log(theme.breakpoints);
-// console.log(theme.props.MuiToolbar.root);
+
 export default theme;

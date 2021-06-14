@@ -27,7 +27,7 @@ import {
   actionIconMap,
   categoryConfig,
 } from "../config";
-import { QRShare } from "../../../components";
+// import { QRShare } from "../../../components";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";

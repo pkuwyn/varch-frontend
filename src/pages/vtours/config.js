@@ -2,7 +2,6 @@ import React from "react";
 
 //icons
 import ThreeDRotationIcon from "@material-ui/icons/ThreeDRotation";
-import PanoramaIcon from "@material-ui/icons/Panorama";
 import WebIcon from "@material-ui/icons/Web";
 import PanoramaHorizontalIcon from "@material-ui/icons/PanoramaHorizontal";
 const iconProps = { fontSize: "large", color: "inherit" };

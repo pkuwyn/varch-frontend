@@ -192,7 +192,7 @@ export default function LearningStatus({
           borderRadius={20}
           overflow="hidden"
         >
-          <img src="/cert.png" alt="证书" width="100%" />
+          <img src="/assets/img/cert.png" alt="证书" width="100%" />
         </Box>
       </Grow>
     </>

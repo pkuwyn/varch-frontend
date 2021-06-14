@@ -1,21 +1,12 @@
 import React from "react";
-import { Link as RouterLink, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useReactiveVar } from "@apollo/client";
 
 //mui
-
 import Container from "@material-ui/core/Container";
 
 //style
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-
-//icons
-import SchoolIcon from "@material-ui/icons/School";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-
-// utils
-import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
 
 // local
 import { categoryConfig } from "../config";

@@ -4,17 +4,17 @@ import { Link as RouterLink, useParams, Redirect } from "react-router-dom";
 import { useReactiveVar } from "@apollo/client";
 
 //mui
+import Fab from "@material-ui/core/Fab";
 
 //style
 import { makeStyles } from "@material-ui/core/styles";
 
 //icons
-
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 // utils
 
 // local
 import { categoryConfig } from "../config";
-import { CourseCard } from "../components";
 import LearnIntro from "./LearnIntro";
 import { useCourseById } from "../../../utils/hooks";
 import MinimalCourseContent from "./MinimalCourseContent";
@@ -24,7 +24,11 @@ import { userVar } from "../../../gql";
 //box import for high priority
 import Box from "@material-ui/core/Box";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+  fab: {
+    ...theme.mixins.returnFab,
+  },
+}));
 
 export default function CategoryPage(props) {
   const classes = useStyles();
@@ -46,6 +50,25 @@ export default function CategoryPage(props) {
 
   return course ? (
     <Box css={{ userSelect: "none" }} mb={[2, 4]}>
+      <Fab
+        aria-label="返回上一级"
+        className={classes.fab}
+        color="primary"
+        component={RouterLink}
+        size="small"
+        to={
+          course.Course.father
+            ? `/courses/learn/${course.Course.father.id}`
+            : `/courses/${
+                categoryConfig.find(
+                  ({ type }) => (type = course.Course.category)
+                ).urlName
+              }`
+        }
+      >
+        <ArrowBackIcon></ArrowBackIcon>
+      </Fab>
+
       <LearnIntro
         user={user}
         course={course.Course}

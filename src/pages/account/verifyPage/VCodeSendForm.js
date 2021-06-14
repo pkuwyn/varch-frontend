@@ -1,13 +1,10 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import { useReactiveVar } from "@apollo/client";
 import { useFormik } from "formik";
 import { userVar } from "../../../gql";
 import { makeStyles } from "@material-ui/core/styles";
-
-import Box from "@material-ui/core/Box";
 
 //local
 import VCodeSender from "./VCodeSender";
@@ -16,7 +13,6 @@ import PasswordResetForm from "./ResetPasswordForm";
 
 //Hooks
 import { useSendVCode } from "../../../utils/hooks";
-import IconButton from "@material-ui/core/IconButton";
 
 //config
 const typeToTitle = {

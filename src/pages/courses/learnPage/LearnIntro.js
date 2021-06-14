@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 //style
 import { makeStyles } from "@material-ui/core/styles";
 
+// icon
+
 // local
 import soilBg from "../../../assets/bg/soil.png";
 import { categoryConfig } from "../config";
@@ -24,16 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LearnIntro({ user, course, finished }) {
   const classes = useStyles();
-  const {
-    id,
-    name,
-    summary,
-    learningTime,
-
-    isMinimal,
-    category,
-    coverImage,
-  } = course;
+  const { name, summary, learningTime, isMinimal } = course;
 
   const headerText = `基础知识  | ${
     categoryConfig.find(({ type }) => type === course.category).name

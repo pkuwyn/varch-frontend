@@ -16,7 +16,7 @@ import ShareIcon from "@material-ui/icons/Share";
 // utils
 
 // local
-import logo from "./images/logo.jpg";
+// import logo from "./images/logo.jpg";
 
 const useStyles = makeStyles((theme) => ({
   dialog: {

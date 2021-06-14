@@ -30,18 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MinimalCourseContent({ course, finished }) {
   const classes = useStyles();
-  console.log(course);
-  const {
-    id,
-    name,
-    summary,
-    learningTime,
-    content,
-    isMinimal,
-    category,
-    coverImage,
-    questions,
-  } = course;
+  const { id, content, coverImage, questions } = course;
   const { user } = useReactiveVar(userVar);
 
   //update course finished status

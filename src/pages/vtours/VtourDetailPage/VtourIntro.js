@@ -24,8 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function VtourIntro({ user, vtour }) {
   const classes = useStyles();
-  const { id, learningTime, order, name, summary, tourType, tourImage, url } =
-    vtour;
+  const { id, learningTime, name, summary, tourType } = vtour;
 
   const vtourFinished = (id) =>
     user

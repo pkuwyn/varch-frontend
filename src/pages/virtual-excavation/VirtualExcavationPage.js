@@ -1,22 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 import { useReactiveVar } from "@apollo/client";
-
-//mui
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-
-//style
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-
-//icons
-import SchoolIcon from "@material-ui/icons/School";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
-
-// utils
-import clsx from "clsx";
 
 // local
 import UnityLoader from "./UnityLoader";
@@ -56,7 +39,7 @@ export default function VirtualExcavationPage(props) {
       console.log("clear");
       clearTimeout(autoUnityFinishTimer);
     };
-  }, []);
+  });
   return (
     <Box>
       <HeroBlock></HeroBlock>

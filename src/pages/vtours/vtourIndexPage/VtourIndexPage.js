@@ -15,7 +15,7 @@ import { useAllVtours } from "../../../utils/hooks";
 import { userVar } from "../../../gql";
 import VtoursIntro from "./VtoursIntro";
 import VtourCard from "./VtourCard";
-import WaitingForMore from "./WaitingForMore";
+// import WaitingForMore from "./WaitingForMore";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
@@ -49,16 +49,13 @@ export default function VtourIndexPage(props) {
     <Box css={{ userSelect: "none" }}>
       <VtoursIntro user={user} totalVtourNumber={vtours.length}></VtoursIntro>
       <Container maxWidth="lg" disableGutters className={classes.cardContainer}>
-        {vtours.map((vtour) => {
-          console.log(vtour);
-          return (
-            <VtourCard
-              key={vtour.id}
-              vtour={vtour}
-              finished={vtourFinished(vtour.id)}
-            ></VtourCard>
-          );
-        })}
+        {vtours.map((vtour) => (
+          <VtourCard
+            key={vtour.id}
+            vtour={vtour}
+            finished={vtourFinished(vtour.id)}
+          ></VtourCard>
+        ))}
       </Container>
       {/* <WaitingForMore></WaitingForMore> */}
     </Box>

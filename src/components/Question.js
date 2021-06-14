@@ -1,24 +1,17 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
 
 //mui
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 
 //style
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles } from "@material-ui/core/styles";
 
 //icons
 import CheckIcon from "@material-ui/icons/Check";
-// utils
-import clsx from "clsx";
 
 // local
 import CongratulationAnimation from "./CongratulationAnimation";

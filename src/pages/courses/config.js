@@ -4,7 +4,6 @@ import React from "react";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import BuildIcon from "@material-ui/icons/Build";
 import MapIcon from "@material-ui/icons/Map";
-import FolderIcon from "@material-ui/icons/Folder";
 import ClassIcon from "@material-ui/icons/Class";
 import CollectionsBookmarkIcon from "@material-ui/icons/CollectionsBookmark";
 

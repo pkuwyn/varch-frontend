@@ -76,8 +76,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function VtourCard({ vtour, finished }) {
-  const { id, learningTime, order, name, summary, tourType, tourImage, url } =
-    vtour;
+  const { id, learningTime, name, summary, tourType, tourImage, url } = vtour;
   const classes = useStyles({ tourType, finished });
   const theme = useTheme();
   const matchSmDown = useMediaQuery(theme.breakpoints.down("sm"));
