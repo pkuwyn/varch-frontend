@@ -2,6 +2,8 @@ import React from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useSnackbar } from "notistack";
 import {
+  GET_COURSE_BY_ID,
+  GET_FIRST_LEVEL_COURSES_BY_CATEGORY,
   GET_COURSES_COUNT,
   GET_MINIMAL_COURSES_COUNT,
   GET_MINIMAL_CATEGORY_COURSES_COUNT,
@@ -20,6 +22,24 @@ import {
 
 //   return { loading, error, data };
 // }
+
+export function useCourseById(id) {
+  const { loading, error, data } = useQuery(GET_COURSE_BY_ID, {
+    variables: { id },
+  });
+
+  return { loading, error, data };
+}
+
+export function useFirstLevelCoursesByCategory(category) {
+  const { loading, error, data } = useQuery(
+    GET_FIRST_LEVEL_COURSES_BY_CATEGORY,
+    {
+      variables: { category },
+    }
+  );
+  return { loading, error, data };
+}
 
 export function useCoursesCount() {
   const { loading, error, data } = useQuery(GET_COURSES_COUNT);

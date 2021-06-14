@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "2px",
     marginRight: theme.spacing(1),
     "&:hover": {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: (props) => theme.palette[iconColorMap[props.type]].main,
       color: theme.palette.common.white,
     },
   },

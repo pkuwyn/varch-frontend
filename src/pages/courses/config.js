@@ -4,6 +4,9 @@ import React from "react";
 import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import BuildIcon from "@material-ui/icons/Build";
 import MapIcon from "@material-ui/icons/Map";
+import FolderIcon from "@material-ui/icons/Folder";
+import ClassIcon from "@material-ui/icons/Class";
+import CollectionsBookmarkIcon from "@material-ui/icons/CollectionsBookmark";
 
 const iconProps = { fontSize: "large", color: "inherit" };
 export const iconSet = {
@@ -15,12 +18,6 @@ export const iconSet = {
   ),
   C2: <BuildIcon {...iconProps} titleAccess="考古工具"></BuildIcon>,
   C3: <MapIcon {...iconProps} titleAccess="圆明园考古介绍"></MapIcon>,
-};
-
-export const typeMap = {
-  C1: "基础理论",
-  C2: "考古工具",
-  C3: "圆明园考古介绍",
 };
 
 //配色
@@ -46,7 +43,7 @@ export const categoryConfig = [
     name: "田野考古常用工具",
     categoryImage: "/assets/img/courses/tools.jpg",
     summary:
-      "本专题介绍田野考古工作中常用的工具，包含考古勘探工具、考古发掘工具、考古测量工具等内容",
+      "本专题介绍田野考古工作中常用的工具，包含考古勘探工具、考古发掘工具、考古测量工具几部分内容",
   },
   {
     type: "C3",
@@ -57,3 +54,12 @@ export const categoryConfig = [
       "本专题介绍了圆明园的田野考古工作，包含圆明园的考古早期清理工作、勘探发掘工作，并具体介绍了几处有代表性的田野考古遗址",
   },
 ];
+
+//课程卡片ActionButton
+export const actionIconMap = (isMinimal) => {
+  return isMinimal ? (
+    <ClassIcon titleAccess="课程小节"></ClassIcon>
+  ) : (
+    <CollectionsBookmarkIcon titleAccess="课程目录"></CollectionsBookmarkIcon>
+  );
+};

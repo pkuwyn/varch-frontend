@@ -40,8 +40,8 @@ export default function LoginForm() {
   const loginMutation = useLogin("/");
   const formik = useFormik({
     initialValues: {
-      email: "me@wynwhy.com",
-      password: "12345678",
+      email: "",
+      password: "",
     },
     validate,
     onSubmit: (values) => {

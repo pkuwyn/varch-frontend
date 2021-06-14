@@ -25,6 +25,7 @@ import Box from "@material-ui/core/Box";
 const useStyles = makeStyles((theme) => ({
   editorContainer: {
     ...theme.tinymce,
+    userSelect: "text",
   },
 }));
 
@@ -35,7 +36,7 @@ export default function WysiwygViewer({ content, boxProps }) {
 
   return (
     <Box
-      px={[1, 2, 0]}
+      px={[1, 1, 1, 0]}
       mx="auto"
       className={classes.editorContainer}
       {...boxProps}

@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 // local
-import square from "../../../assets/bg/hip-square.png";
+import soilBg from "../../../assets/bg/soil.png";
 import { ProgressBar } from "../../../components";
 
 //box import for high priority
@@ -15,7 +15,7 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundImage: `url(${square})`,
+    backgroundImage: `url(${soilBg})`,
     backgroundRepeat: "repeat",
   },
 }));
@@ -45,7 +45,11 @@ export default function CoursesIntro({ user, totalCourses }) {
       >
         基础知识
       </Typography>
-      <Typography variant="body1" color="initial" style={{ maxWidth: "80%" }}>
+      <Typography
+        variant="body1"
+        color="initial"
+        style={{ maxWidth: "80%", width: "960px" }}
+      >
         学习田野考古基础知识，包括田野考古基础理论、田野考古常用工具、圆明园田野考古工作介绍三个专题
       </Typography>
       {user && (

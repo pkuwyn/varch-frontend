@@ -19,6 +19,17 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
+  "@keyframes slideIn": {
+    from: {
+      transform: "translateY(-100vh)",
+    },
+    to: {
+      transform: "translateY(0)",
+    },
+  },
+  boxContainer: {
+    animation: `$slideIn 0.5s ease-in-out  forwards `,
+  },
   mainActionButton: {
     marginTop: "1rem",
     fontWeight: 700,
@@ -43,14 +54,15 @@ const useStyles = makeStyles((theme) => ({
 export default function HeroBlock(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const matchXsDown = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchesSmDown = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box
       minHeight={500}
       height="95vh"
+      className={classes.boxContainer}
       css={{
         backgroundImage: `linear-gradient(${
-          matchXsDown ? "to bottom" : " to right"
+          matchesSmDown ? "to bottom" : " to right"
         }, rgba(255,255,255,1) 0%,transparent 100%),url(/assets/img/landing/dbnj.jpg)`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -69,7 +81,7 @@ export default function HeroBlock(props) {
         }}
         display="flex"
         flexDirection="column"
-        alignItems={matchXsDown ? "center" : "flex-start"}
+        alignItems={matchesSmDown ? "center" : "flex-start"}
       >
         <Typography
           variant="h4"
@@ -87,7 +99,7 @@ export default function HeroBlock(props) {
             fontFamily: "SimSun",
             position: "relative",
 
-            left: matchXsDown ? 0 : -10,
+            left: matchesSmDown ? 0 : -10,
           }}
         >
           田野考古
@@ -98,7 +110,7 @@ export default function HeroBlock(props) {
             maxWidth: 500,
           }}
           paragraph
-          align={matchXsDown ? "center" : "left"}
+          align={matchesSmDown ? "center" : "left"}
         >
           本网站以虚拟仿真的模式提供田野考古知识教学，您可以学习田野考古理论知识，虚拟参观田野考古遗址，并动手完成一次虚拟的建筑遗址考古发掘
         </Typography>

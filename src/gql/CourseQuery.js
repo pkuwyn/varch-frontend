@@ -1,47 +1,25 @@
 import { gql } from "@apollo/client";
 
-import { COURSES_FIELDS } from "./fragments";
+import { COURSES_FIELDS, COURSES_FIELDS_DETAILED } from "./fragments";
 
-export const GET_COURSES = gql`
-  ${COURSES_FIELDS}
-  query getAllCourses {
-    allCourses {
-      ...CoursesFields
-    }
-  }
-`;
-
-export const GET_COURSES_FOR_PAGE = gql`
-  ${COURSES_FIELDS}
-  query getAllCourses($offset: Int!, $limit: Int!) {
-    allCourses(skip: $offset, first: $limit) {
-      ...CoursesFields
-    }
-  }
-`;
-
-export const GET_COURSE = gql`
-  ${COURSES_FIELDS}
-  query getCourse($id: ID!) {
+//useful
+export const GET_COURSE_BY_ID = gql`
+  ${COURSES_FIELDS_DETAILED}
+  query getCourseById($id: ID!) {
     Course(where: { id: $id }) {
-      ...CoursesFields
+      ...CoursesFieldsDetailed
     }
   }
 `;
 
-export const SEARCH_COURSES = gql`
+export const GET_FIRST_LEVEL_COURSES_BY_CATEGORY = gql`
   ${COURSES_FIELDS}
-  query getAllCourses($search: String) {
-    allCourses(search: $search) {
+  query getFirstLevelCoursesByCategory($category: CourseCategoryType!) {
+    allCourses(
+      where: { category: $category, father_is_null: true }
+      sortBy: order_ASC
+    ) {
       ...CoursesFields
-    }
-  }
-`;
-
-export const GET_LONGEST_COURSE = gql`
-  query getLongestCourse {
-    allCourses(sortBy: learningTime_DESC, first: 1) {
-      learningTime
     }
   }
 `;

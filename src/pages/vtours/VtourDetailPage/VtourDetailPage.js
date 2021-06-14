@@ -19,11 +19,10 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import clsx from "clsx";
 
 // local
-import { useUpdateCurrentUser } from "../../../utils/hooks";
+import { useUpdateCurrentUser, useVtourById } from "../../../utils/hooks";
+import { userVar } from "../../../gql";
 
 import bg from "../../../assets/bg/shape-bg.png";
-import { userVar } from "../../../gql";
-import { useVtourById } from "../../../utils/hooks";
 import VtourIntro from "./VtourIntro";
 import { WysiwygViewer } from "../../../components";
 import { Question } from "../../../components";
@@ -89,7 +88,12 @@ export default function VtourDetailPage(props) {
 
   return (
     vtour && (
-      <Box>
+      <Box
+        pb={[4, 8]}
+        css={{
+          userSelect: "none",
+        }}
+      >
         <VtourIntro vtour={vtour} user={user}></VtourIntro>
         <VtourIframe
           tourImage={vtour.tourImage}

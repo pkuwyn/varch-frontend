@@ -48,9 +48,9 @@ export default function LoginForm() {
   const formik = useFormik({
     initialValues: {
       //dev
-      email: `${Math.floor(Math.random() * 10000)}@wynwhy.com`,
-      password: "12345678",
-      passwordConfirm: "12345678",
+      email: "",
+      password: "",
+      passwordConfirm: "",
     },
     validate,
     onSubmit: (values) => {

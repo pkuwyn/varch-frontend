@@ -143,8 +143,8 @@ export default function LearningStatus({
         </Box>
         <Box>
           <ProgressBar
-            total={unityFinished ? 1 : 0}
-            finished={1}
+            finished={unityFinished ? 1 : 0}
+            total={1}
             {...progressProps}
           >
             <Box

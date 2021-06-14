@@ -54,9 +54,9 @@ export default function App(props) {
           </Route>
 
           {/* dev Only */}
-          <Route exact path="/d">
+          {/* <Route exact path="/d">
             <DesignSystem></DesignSystem>
-          </Route>
+          </Route> */}
 
           <Route exact path="/">
             <LandingPage></LandingPage>

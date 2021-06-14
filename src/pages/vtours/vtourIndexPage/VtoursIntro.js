@@ -45,7 +45,11 @@ export default function VtoursIntro({ user, totalVtourNumber }) {
       >
         虚拟实习
       </Typography>
-      <Typography variant="body1" color="initial" style={{ maxWidth: "80%" }}>
+      <Typography
+        variant="body1"
+        color="initial"
+        style={{ maxWidth: "80%", width: "960px" }}
+      >
         参与以下虚拟田野考古实习项目，利用实景三维模型、全景漫游、交互网站等方式，进行考古遗址线上踏查实习
       </Typography>
       {user && (

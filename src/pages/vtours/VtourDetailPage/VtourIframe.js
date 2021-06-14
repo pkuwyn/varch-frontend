@@ -25,7 +25,6 @@ import Box from "@material-ui/core/Box";
 import IconButton from "@material-ui/core/IconButton";
 
 const useStyles = makeStyles((theme) => ({
-  iframeContainer: {},
   paper: {
     borderRadius: 100,
     position: "absolute",
@@ -62,7 +61,6 @@ export default function VtourIframe({ url, tourImage, title, boxProps }) {
       maxWidth={960}
       height={[300, 600]}
       mx="auto"
-      className={classes.iframeContainer}
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -99,9 +97,6 @@ export default function VtourIframe({ url, tourImage, title, boxProps }) {
             titleAccess="开始实习"
           ></PlayArrowIcon>
         </Paper>
-        // <IconButton className={classes.iconButton} color="secondary">
-
-        // </IconButton>
       )}
     </Box>
   );

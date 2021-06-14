@@ -65,7 +65,11 @@ export default function VtourIntro({ user, vtour }) {
         {name}
       </Typography>
 
-      <Typography variant="body1" color="initial" style={{ maxWidth: "80%" }}>
+      <Typography
+        variant="body1"
+        color="initial"
+        style={{ maxWidth: "80%", width: "960px" }}
+      >
         {summary}
       </Typography>
       {user && <Box width="80%" maxWidth={600} mt={2}></Box>}
