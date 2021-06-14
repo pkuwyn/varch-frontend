@@ -49,13 +49,16 @@ export default function VtourIndexPage(props) {
     <Box css={{ userSelect: "none" }}>
       <VtoursIntro user={user} totalVtourNumber={vtours.length}></VtoursIntro>
       <Container maxWidth="lg" disableGutters className={classes.cardContainer}>
-        {vtours.map((vtour) => (
-          <VtourCard
-            key={vtour.id}
-            vtour={vtour}
-            finished={vtourFinished(vtour.id)}
-          ></VtourCard>
-        ))}
+        {vtours.map((vtour) => {
+          console.log(vtour);
+          return (
+            <VtourCard
+              key={vtour.id}
+              vtour={vtour}
+              finished={vtourFinished(vtour.id)}
+            ></VtourCard>
+          );
+        })}
       </Container>
       {/* <WaitingForMore></WaitingForMore> */}
     </Box>

@@ -96,7 +96,6 @@ export default function UnityLoader(props) {
         className={classes.unityIframe}
         loading="eager"
         scrolling="no"
-        allowtransparency={true}
         allowFullScreen={true}
       ></iframe>
     </Box>

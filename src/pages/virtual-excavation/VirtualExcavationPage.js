@@ -21,7 +21,7 @@ import clsx from "clsx";
 // local
 import UnityLoader from "./UnityLoader";
 import HeroBlock from "./HeroBlock";
-import { useUpdateCurrentUser, useVtourById } from "../../utils/hooks";
+import { useUpdateCurrentUser } from "../../utils/hooks";
 import { userVar } from "../../gql";
 //box import for high priority
 import Box from "@material-ui/core/Box";
@@ -33,24 +33,24 @@ export default function VirtualExcavationPage(props) {
     showSnackBar: false,
   });
 
-  const handleUpdateUserFinishedVtours = () => {
-    //未登录用户跳过
-    if (!user) {
-      return null;
-    }
-
-    // 已学习用户跳过
-    if (user.unityFinished) {
-      return null;
-    }
-
-    const data = {
-      unityFinished: true,
-    };
-    updateCurrentUserMutation({ variables: { data } });
-  };
-
   React.useEffect(() => {
+    const handleUpdateUserFinishedVtours = () => {
+      //未登录用户跳过
+      if (!user) {
+        return null;
+      }
+
+      // 已学习用户跳过
+      if (user.unityFinished) {
+        return null;
+      }
+
+      const data = {
+        unityFinished: true,
+      };
+      updateCurrentUserMutation({ variables: { data } });
+    };
+
     const autoUnityFinishTimer = setTimeout(handleUpdateUserFinishedVtours);
     return () => {
       console.log("clear");

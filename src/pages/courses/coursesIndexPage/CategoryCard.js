@@ -10,11 +10,13 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
 //style
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 //icons
+import ViewModuleIcon from "@material-ui/icons/ViewModule";
 
 // utils
 
@@ -121,10 +123,17 @@ export default function CategoryCard({ category }) {
                 variant: "h5",
               }}
               action={
-                <QRShare
-                  title="扫码进入专题"
-                  url={`${process.env.REACT_APP_HOMEPAGE_URI}/courses/${urlName}`}
-                />
+                // <QRShare
+                //   title="扫码进入专题"
+                //   url={`${process.env.REACT_APP_HOMEPAGE_URI}/courses/${urlName}`}
+                // />
+                <IconButton
+                  aria-label="进入专题"
+                  component={RouterLink}
+                  to={`/courses/${urlName}`}
+                >
+                  <ViewModuleIcon></ViewModuleIcon>
+                </IconButton>
               }
               title={name}
               subheader={

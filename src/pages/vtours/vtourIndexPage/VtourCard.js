@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
   summaryText: {
     textIndent: "2em",
     flexGrow: 1,
+    wordBreak: "break-all",
   },
   readMore: {
     marginLeft: "auto",
@@ -91,6 +92,7 @@ export default function VtourCard({ vtour, finished }) {
       }}
     ></CardMedia>
   );
+
   const history = useHistory();
   return (
     <Box

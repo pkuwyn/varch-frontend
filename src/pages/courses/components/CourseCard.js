@@ -101,7 +101,7 @@ export default function CourseCard({ course, finished }) {
       image={`${process.env.REACT_APP_MEDIA_URI}${coverImage.publicUrl}`}
       className={classes.cardMedia}
       onClick={() => {
-        history.push(`./courses/learn/${id}`);
+        history.push(`/courses/learn/${id}`);
       }}
     ></CardMedia>
   );
