@@ -12,9 +12,8 @@ import { makeStyles } from "@material-ui/core/styles";
 // utils
 
 // local
+import playPatternBg from "../../../assets/bg/playstation-pattern.png";
 import { useUpdateCurrentUser } from "../../../utils/hooks";
-
-import bg from "../../../assets/bg/shape-bg.png";
 import { userVar } from "../../../gql";
 import { WysiwygViewer } from "../../../components";
 import { Question } from "../../../components";
@@ -85,15 +84,13 @@ export default function MinimalCourseContent({ course, finished }) {
 
       <Box
         width={1}
+        py={4}
         css={{
-          backgroundImage: `url(${bg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundImage: `url(${playPatternBg})`,
           backgroundRepeat: "repeat",
         }}
       >
         <Box
-          mt={[2, 4, 6]}
           mx="auto"
           maxWidth="100%"
           width={960}

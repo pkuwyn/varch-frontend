@@ -112,7 +112,7 @@ export default function HeroBlock(props) {
           paragraph
           align={matchesSmDown ? "center" : "left"}
         >
-          本网站以虚拟仿真的模式提供田野考古知识教学，您可以学习田野考古理论知识，虚拟参观田野考古遗址，并动手完成一次虚拟的建筑遗址考古发掘
+          本网站以虚拟仿真的模式提供田野考古知识教学，您可以学习田野考古基础理论知识，进行在线田野考古遗址参观实习，拟参与澹泊宁静考古遗址的虚拟发掘，掌握田野考古知识
         </Typography>
         <Box display="flex" alignItems="center">
           <Button

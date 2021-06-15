@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 //icons
 
 // local
-import square from "../../../assets/bg/hip-square.png";
+import squareBg from "../../../assets/bg/hip-square.png";
 import { typeMap } from "../config";
 
 //box import for high priority
@@ -17,7 +17,7 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundImage: `url(${square})`,
+    backgroundImage: `url(${squareBg})`,
     backgroundRepeat: "repeat",
   },
 }));

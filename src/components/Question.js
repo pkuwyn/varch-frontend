@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import CheckIcon from "@material-ui/icons/Check";
 
 // local
+import schoolBg from "../assets/bg/school.png";
 import CongratulationAnimation from "./CongratulationAnimation";
 
 //box import for high priority
@@ -21,6 +22,8 @@ import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   questionContainer: {
+    backgroundImage: `url(${schoolBg})`,
+    backgroundRepeat: "repeat",
     "& > *:not(:last-child)": {
       marginBottom: theme.spacing(2),
     },
@@ -76,7 +79,6 @@ export default function Question({ question, boxProps, handleUpdate }) {
   return (
     <Box
       {...boxProps}
-      bgcolor="#e3f2fd"
       p={[2, 4, 6]}
       borderRadius={4}
       boxShadow={1}

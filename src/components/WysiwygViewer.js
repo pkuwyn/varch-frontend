@@ -31,11 +31,11 @@ export default function WysiwygViewer({ content, boxProps }) {
         tagName="article"
         disabled
         initialValue={content}
-        init={{
-          content_style: `
-            body { font-family:Helvetica,Arial,sans-serif; font-size:14px };
-            `,
-        }}
+        // init={{
+        //   content_style: `
+        //     body { font-family:Helvetica,Arial,sans-serif; font-size:14px };
+        //     `,
+        // }}
       />
     </Box>
   );

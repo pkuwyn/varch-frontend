@@ -146,11 +146,31 @@ theme.tinymce = {
   "& *": {
     fontFamily: `"Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif`,
   },
-  "& table": {
+  "& table ": {
+    marginBottom: 16,
     maxWidth: "100% ",
     tableLayout: "fixed",
     wordBreak: "break-all",
+    "& tr:nth-child(odd)": {
+      backgroundColor: theme.palette.grey[200],
+    },
+    "& tr:first-child": {
+      fontWeight: "bold",
+    },
+    "& p,span": {
+      textIndent: 0,
+      textAlign: "center",
+
+      fontSize: "1rem",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "0.95rem",
+      },
+      [theme.breakpoints.down("xs")]: {
+        fontSize: "0.85rem",
+      },
+    },
   },
+
   "& img": {
     maxWidth: 960,
     width: "85%",
@@ -191,7 +211,7 @@ theme.tinymce = {
     fontWeight: 700,
     color: theme.palette.grey[500],
   },
-  "& p,li": {
+  "& p": {
     fontSize: "1.25rem",
     textIndent: "2em",
     [theme.breakpoints.down("sm")]: {
@@ -202,8 +222,19 @@ theme.tinymce = {
     },
   },
   "& li": {
+    "&:not(:last-child)": {
+      marginBottom: 4,
+    },
     color: theme.palette.grey[600],
     textIndent: 0,
+    marginLeft: "2rem",
+    fontSize: "1.1rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "0.9rem",
+    },
   },
 };
 

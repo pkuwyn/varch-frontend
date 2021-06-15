@@ -10,7 +10,8 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 // local
 import { modules } from "./config";
 
-import bg from "../../assets/bg/shape-bg.png";
+import playPatternBg from "../../assets/bg/playstation-pattern.png";
+
 import ModuleIntroCard from "./ModuleIntroCard";
 
 //box import for high priority
@@ -37,10 +38,8 @@ export default function ModuleBlock(props) {
       }}
       component="section"
       css={{
-        backgroundImage: `url(${bg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundImage: `url(${playPatternBg})`,
+        backgroundRepeat: "repeat",
       }}
       display="flex"
       minHeight={700}

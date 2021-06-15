@@ -102,7 +102,7 @@ export default function RegisterBlock(props) {
                   justifyContent={matchSmDown ? "center" : "flex-start"}
                 >
                   <Typography variant="body1" color="initial">
-                    注册成为新用户，记录课程学习进度，完成所有课程，获得课程结题证书
+                    注册成为新用户，登陆后可以在个人资料里查看课程学习进度，完成全部课程解锁证书
                   </Typography>
                   <Hidden smDown>
                     <img src={cert} alt="证书" />
