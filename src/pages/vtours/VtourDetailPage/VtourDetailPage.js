@@ -115,7 +115,6 @@ export default function VtourDetailPage(props) {
           }}
         >
           <Box
-            // mt={[2, 4, 6]}
             mx="auto"
             maxWidth="100%"
             width={960}

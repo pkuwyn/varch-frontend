@@ -11,7 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // local
 import soilBg from "../../../assets/bg/soil.png";
 import { categoryConfig } from "../config";
-
+import { AdminEdit } from "../../../components";
 // import { ProgressBar } from "../../../components";
 
 //box import for high priority
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LearnIntro({ user, course, finished }) {
   const classes = useStyles();
-  const { name, summary, learningTime, isMinimal } = course;
+  const { name, summary, learningTime, isMinimal, id } = course;
 
   const headerText = `基础知识  | ${
     categoryConfig.find(({ type }) => type === course.category).name
@@ -51,14 +51,18 @@ export default function LearnIntro({ user, course, finished }) {
         {headerText}
       </Typography>
 
-      <Typography
-        variant="h3"
-        color="primary"
-        style={{ fontFamily: "SimSun", fontWeight: 700 }}
-        gutterBottom
-      >
-        {name}
-      </Typography>
+      <Box display="flex" alignItems="center" mb={2}>
+        <Typography
+          variant="h3"
+          color="primary"
+          style={{ fontFamily: "SimSun", fontWeight: 700 }}
+          gutterBottom={false}
+        >
+          {name}
+        </Typography>
+        <AdminEdit objectType="courses" id={id}></AdminEdit>
+      </Box>
+
       <Typography
         variant="body1"
         color="initial"

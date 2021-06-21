@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // local
 import squareBg from "../../../assets/bg/hip-square.png";
 import { typeMap } from "../config";
+import { AdminEdit } from "../../../components";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
@@ -55,14 +56,17 @@ export default function VtourIntro({ user, vtour }) {
         }`}
       </Typography>
 
-      <Typography
-        variant="h3"
-        color="primary"
-        style={{ fontFamily: "SimSun", fontWeight: 700 }}
-        gutterBottom
-      >
-        {name}
-      </Typography>
+      <Box display="flex" alignItems="center" mb={2}>
+        <Typography
+          variant="h3"
+          color="primary"
+          style={{ fontFamily: "SimSun", fontWeight: 700 }}
+          gutterBottom={false}
+        >
+          {name}
+        </Typography>
+        <AdminEdit objectType="vtours" id={id}></AdminEdit>
+      </Box>
 
       <Typography
         variant="body1"

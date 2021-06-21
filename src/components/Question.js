@@ -16,6 +16,7 @@ import CheckIcon from "@material-ui/icons/Check";
 // local
 import schoolBg from "../assets/bg/school.png";
 import CongratulationAnimation from "./CongratulationAnimation";
+import { AdminEdit } from "../components";
 
 //box import for high priority
 import Box from "@material-ui/core/Box";
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Question({ question, boxProps, handleUpdate }) {
   const classes = useStyles();
-  const { content, questionImage, answer, explanation } = question;
+  const { content, questionImage, answer, explanation, id } = question;
 
   //state for finishedAnswer
   const [answerCorrect, setAnswerCorrect] = React.useState(false);
@@ -83,7 +84,12 @@ export default function Question({ question, boxProps, handleUpdate }) {
       borderRadius={4}
       boxShadow={1}
       className={classes.questionContainer}
+      position="relative"
     >
+      <Box position="absolute" right={8} top={8}>
+        <AdminEdit objectType="questions" id={id}></AdminEdit>
+      </Box>
+
       {questionImage && (
         <img
           src={`${process.env.REACT_APP_MEDIA_URI}${questionImage.publicUrl}`}
