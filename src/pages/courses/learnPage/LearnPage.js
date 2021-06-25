@@ -61,7 +61,7 @@ export default function CategoryPage(props) {
             ? `/courses/learn/${course.Course.father.id}`
             : `/courses/${
                 categoryConfig.find(
-                  ({ type }) => (type = course.Course.category)
+                  ({ type }) => type === course.Course.category
                 ).urlName
               }`
         }
